@@ -97,8 +97,60 @@ h1 {
   @apply font-extrabold;
 }
 
+h2 {
+  @apply text-4xl;
+  @apply font-extrabold;
+}
+
+h3 {
+  @apply text-3xl;
+  @apply font-bold;
+}
+
+h4 {
+  @apply text-6xl;
+  @apply font-extrabold;
+}
+
+h5 {
+  @apply text-6xl;
+  @apply font-extrabold;
+}
+
+h6 {
+  @apply text-6xl;
+  @apply font-extrabold;
+}
+
+p {
+  @apply font-normal;
+}
+
+blockquote {
+  font-family: 'Arbutus Slab', serif;
+}
+
 .container {
   @apply mx-auto;
+  max-width: Min(100%, 1200px);
+}
+
+.blue-oval {
+  background-image: linear-gradient(#57fffc, #004f99 80%);
+  @apply rounded-full;
+  box-shadow: 0 12px 25px 6px rgba(0, 0, 0, 0.25);
+}
+
+.teal-oval {
+  background-image: linear-gradient(#00fad4, #005f85);
+  @apply rounded-full;
+  box-shadow: 0 12px 25px 6px rgba(0, 0, 0, 0.25);
+}
+
+.purple-oval {
+  background-image: linear-gradient(#73adff, #5040e3);
+  @apply rounded-full;
+  box-shadow: 0 12px 25px 6px rgba(0, 0, 0, 0.25);
 }
 
 // NAVBAR

@@ -26,7 +26,7 @@
       </div>
       <button
         id="hamburger"
-        :class="{ focused: navBarFocused }"
+        :class="{ focused: navBarFocused, 'z-50': true }"
         @click="navBarFocused = !navBarFocused"
       >
         <svg width="30px" height="25px" viewBox="0 0 30 25">
@@ -58,12 +58,35 @@
       </button>
     </nav>
     <header class="main-header">
-      <h1>Seeking answers, finding truth.</h1>
-      <div id="blue-oval">
-        <img src="../assets/Blue Oval.svg" alt="blue-oval" />
-      </div>
+      <h1>
+        Seeking
+        <br />
+        answers, <br />finding <br />truth.
+      </h1>
+      <div id="head-oval" class="blue-oval"></div>
     </header>
-    <div class="main-body"></div>
+    <div class="container main-body">
+      <div class="mb-12 text-right">
+        <h3 class="uppercase">Who are we?</h3>
+        <p>
+          We are a web-based ministry that aims to equip the believer defend
+          their faith so that they may effectively evangelise.
+        </p>
+      </div>
+      <div class="text-left">
+        <h3 class="uppercase">What do we do?</h3>
+        <p>
+          We live out our Mission and Vision by airing our bi-weekly SAFT
+          Podcast and engage with live audience across languages via open
+          forums.
+        </p>
+      </div>
+      <div id="big-body-oval" class="teal-oval"></div>
+      <blockquote id="tagline">
+        Helping the believer defend their faith anytime, anywhere.
+      </blockquote>
+      <div id="small-body-oval" class="purple-oval"></div>
+    </div>
   </div>
 </template>
 
@@ -94,30 +117,51 @@ export default Vue.extend({
   @apply relative;
   @apply top-0;
   @apply w-full;
-  height: 30rem;
+  overflow-x: clip;
+  height: 60vh;
   background-image: linear-gradient(#194c8f, #02283b);
 
   h1 {
-    @apply absolute;
     @apply uppercase;
     @apply leading-none;
     @apply text-white;
-    @apply text-5xl;
-    bottom: 9rem;
+    font-size: 7.5vh;
+    padding-top: 15vh;
   }
 
-  #blue-oval {
-    @apply relative;
-    bottom: -311px;
-    right: -207px;
-    @apply w-screen;
-
-    img {
-      width: 231px;
-    }
+  #head-oval {
+    @apply absolute;
+    top: 62%;
+    left: 64%;
+    width: Min(400px, 60vw);
+    height: Min(400px, 60vw);
   }
 }
 
 .main-body {
+  margin-top: 14vh;
+  @apply px-8;
+
+  #big-body-oval {
+    @apply relative;
+    @apply mt-16;
+    left: -30%;
+    width: 220px;
+    height: 220px;
+  }
+
+  #tagline {
+    @apply pt-10;
+    @apply pb-8;
+    @apply text-center;
+    @apply leading-relaxed;
+  }
+
+  #small-body-oval {
+    @apply relative;
+    right: -80%;
+    width: 80px;
+    height: 80px;
+  }
 }
 </style>
