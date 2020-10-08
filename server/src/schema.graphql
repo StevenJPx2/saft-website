@@ -1,7 +1,39 @@
 schema {
   query: Query
+  mutation: Mutation
+}
+
+scalar HTML
+scalar Date
+
+type User {
+  id: ID!
+  userName: String!
+  fullName: String!
+  desc: HTML!
+  passwordHash: String!
+  articles: [Post!]!
+  drafts: [Post!]!
+}
+
+type Post {
+  id: ID!
+  title: String!
+  date: Date!
+  body: HTML!
+  author: User!
 }
 
 type Query {
-  helloWorld(name: String!): String! @juniper(ownership: "owned")
+  validateUser(userName: String!, passwordHash: String!): User
+  user(userName: String!): User
+  me: User!
+  post(id: ID!): Post
+  posts: [Post!]
+}
+
+type Mutation {
+  addPost(post: Post!): String!
+  deletePost(post: Post!): String!
+  updatePost(post: Post!): String!
 }

@@ -1,22 +1,25 @@
-use juniper_from_schema::graphql_schema_from_file;
+use actix_web::{get, middleware, App, HttpResponse, HttpServer, Responder};
 
-graphql_schema_from_file!("./src/schema.graphql");
+mod graphql;
 
-pub struct Context;
-impl juniper::Context for Context {}
-
-pub struct Query;
-
-impl QueryFields for Query {
-    fn field_hello_world(
-        &self,
-        executor: &juniper::Executor<'_, Context>,
-        name: String,
-    ) -> juniper::FieldResult<String> {
-        Ok(format!("Hello, {}!", name))
-    }
+#[get("/")]
+async fn index() -> impl Responder {
+    HttpResponse::Ok().body("Bruh")
 }
 
-fn main() {
-    println!("Hello, world!");
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    std::env::set_var("RUST_LOG", "actix_web=info");
+    env_logger::init();
+    dotenv::dotenv().ok();
+
+    HttpServer::new(|| {
+        App::new()
+            .service(index)
+            .wrap(middleware::Logger::default())
+            .wrap(actix_cors::Cors::default())
+    })
+    .bind("localhost:8080")?
+    .run()
+    .await
 }
