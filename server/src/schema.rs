@@ -4,7 +4,7 @@ table! {
         title -> Varchar,
         date -> Date,
         body -> Text,
-        author_id -> Varchar,
+        author -> Varchar,
         published -> Bool,
     }
 }
@@ -17,7 +17,7 @@ table! {
         descr -> Text,
         email -> Text,
         password_hash -> Varchar,
-        author_ids -> Nullable<Array<Uuid>>,
+        article_ids -> Nullable<Array<Uuid>>,
         draft_ids -> Nullable<Array<Uuid>>,
     }
 }

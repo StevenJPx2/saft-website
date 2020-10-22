@@ -4,6 +4,6 @@ CREATE TABLE posts (
   title VARCHAR NOT NULL,
   date DATE NOT NULL,
   body TEXT NOT NULL,
-  author_id VARCHAR NOT NULL,
+  author VARCHAR NOT NULL,
   published BOOL NOT NULL
 );
