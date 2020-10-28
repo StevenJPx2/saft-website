@@ -17,8 +17,8 @@ table! {
         descr -> Text,
         email -> Text,
         password_hash -> Varchar,
-        article_ids -> Nullable<Array<Uuid>>,
-        draft_ids -> Nullable<Array<Uuid>>,
+        article_ids -> Array<Uuid>,
+        draft_ids -> Array<Uuid>,
     }
 }
 

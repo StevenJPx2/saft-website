@@ -1,4 +1,4 @@
-use actix_web::{guard, middleware, web, HttpResponse};
+use actix_web::{guard, web, HttpResponse};
 use async_graphql::{
     http::{playground_source, GraphQLPlaygroundConfig},
     EmptySubscription, Schema,

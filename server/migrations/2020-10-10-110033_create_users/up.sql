@@ -6,6 +6,6 @@ CREATE TABLE users (
   descr TEXT NOT NULL,
   email TEXT NOT NULL,
   password_hash VARCHAR NOT NULL,
-  article_ids UUID[],
-  draft_ids UUID[]
+  article_ids UUID[] NOT NULL,
+  draft_ids UUID[] NOT NULL
 );
