@@ -83,7 +83,7 @@
     <section class="podcast-badges">
       <a href="https://podcasts.apple.com/in/podcast/saft-podcast/id1511404295"
         ><img
-          src="../assets/Apple Podcasts.png"
+          src="@/assets/Apple Podcasts.png"
           alt="Apple Podcasts"
           class="podcast-badge"
       /></a>
@@ -91,14 +91,14 @@
       <a
         href="https://podcasts.google.com/?feed=aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xMDM0NjcxLnJzcw=="
         ><img
-          src="../assets/Google Podcasts.png"
+          src="@/assets/Google Podcasts.png"
           alt="Google Podcasts"
           class="ml-auto podcast-badge"
       /></a>
 
       <a href="https://open.spotify.com/show/4hOLouY5QFv3KuNNDUi5hM"
         ><img
-          src="../assets/Spotify Podcasts.png"
+          src="@/assets/Spotify Podcasts.png"
           alt="Spotify Podcasts"
           class="ml-4 podcast-badge"
       /></a>
@@ -243,7 +243,7 @@ export default {
     }
 
     .text-stuff {
-      background-image: url('../assets/text-stuff.png');
+      background-image: url('~assets/text-stuff.png');
       @apply absolute;
       top: -11%;
       height: 600px;

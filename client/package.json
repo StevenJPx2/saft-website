@@ -6,7 +6,8 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "export": "nuxt export"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -20,7 +21,7 @@
     "fibers": "^5.0.0",
     "node-sass": "^4.14.1",
     "prettier": "^2.1.2",
-    "sass": "^1.27.0",
+    "sass": "^1.28.0",
     "sass-loader": "^10.0.4"
   }
 }

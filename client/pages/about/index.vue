@@ -72,7 +72,7 @@
         </p>
         <p>
           And there I was. Thrilled by the field of Christian apologetics.
-          Satisfied with how it defended my faith . Wondering why I didn’t start
+          Satisfied with how it defended my faith. Wondering why I didn’t start
           early. Stunned by the plethora of resources out there. Excited to see
           the Amazon delivery agent soon. Thankful to God for introducing me at
           the right time.
@@ -99,7 +99,7 @@
         <p>
           So prayerfully with the support of my friends, I started SAFT
           Apologetics. We decided podcasts were the way to go ahead and SAFT
-          Podcast was born. Down the line, as they had to part ways with SAFT ,
+          Podcast was born. Down the line, as they had to part ways with SAFT,
           God sovereignly brought Ankit (you might know him as Piyush) into the
           team. Being from a missionary family that has been at the helm of
           advancing the gospel through India Campus Crusade for Christ in varied
@@ -131,7 +131,7 @@
           <p>
             To make the case for and defend our faith in the Triune God of the
             Bible using the tool of apologetics in a manner that can be grasped
-            and incorporated by any lay -man so that they may be equipped.
+            and incorporated by any lay-man so that they may be equipped.
           </p>
 
           <h1>Vision</h1>
@@ -145,18 +145,71 @@
       <section class="container section">
         <h1>Our Core Team</h1>
         <div class="columns">
-          <div
-            v-for="(person, index) in coreTeamDetails"
-            :key="index"
-            class="box section column m-3 mb-3"
-          >
+          <div class="box section column m-3 mb-3">
             <img
-              :src="person.image"
-              :alt="person.name"
+              src="@/assets/jacob-varghese.jpg"
+              alt="Jacob Varghese"
               class="rounded-full is-256x256 mx-auto"
             />
-            <h3>{{ person.name }}</h3>
-            <p>{{ person.body }}</p>
+            <h3>Jacob Varghese</h3>
+            <p>
+              Born to parents hailing from Kerala, who to the dismay and
+              resistance of his grandparents decided to follow God and know Him
+              through scripture alone, instead of traditions, Jacob understood
+              the necessity of placing God’s sovereign will above all. He
+              completed his undergrad in economics in Kolkata and has been
+              involved with church ministry, youth ministry (ICPF UAE) and
+              campus ministry (India Campus Crusade for Christ). He is currently
+              serving as Reasonable Faith Chapter Director, Ajman, UAE. He loves
+              music, cricket and is a fan of coffee- black or cream! He also has
+              an amazing younger sister who often makes him feel that he is the
+              younger sibling. 😉
+            </p>
+          </div>
+
+          <div class="box section column m-3 mb-3">
+            <img
+              src="@/assets/ankit-nayak.jpg"
+              alt="Ankit Nayak"
+              class="rounded-full is-256x256 mx-auto"
+            />
+            <h3>Ankit Nayak</h3>
+            <p>
+              Ankit has been an active part of Assembly of God Church ministries
+              in Kolkata and India Campus Crusade for Christ. Passionate about
+              learning, he completed multiple courses ranging from Rave
+              Lifestyle Journey, Graduate Evangelism Training Programme from
+              India Campus Crusade for Christ and a diploma in theology (about
+              discipleship and the book of Galatians) from Bible Education by
+              Extension International (BEE International). At present, he is
+              ministering in his university shouldering the leadership role of
+              the ICCC fellowship. He was born and brought up in a missionary
+              family currently spearheading India Campus Crusade for Christ in
+              their respective designations and area in India. He has a keen
+              interest in music and technology. Right now he is pursuing
+              Engineering with Artificial Intelligence. Working alongside Jacob
+              in SAFT, he is able to identify the need for educating people with
+              the evidence of faith and considers it a privilege to use his
+              expertise and interest in apologetics for God's glory. He loves
+              singing and playing guitar for God's glory.
+            </p>
+          </div>
+
+          <div class="box section column m-3 mb-3">
+            <img
+              src="@/assets/steven-john.jpg"
+              alt="Steven John"
+              class="rounded-full is-256x256 mx-auto"
+            />
+            <h3>Steven John</h3>
+            <p>
+              Steven John has always been an active and passionate evangelism
+              oriented student with a deep seated desire to further his innate
+              talent in design and coding. Steven had been a pivotal part of
+              ICPF UAE as a student leader and furthered his impactful role with
+              the Evangelical Union during his university education as a youth
+              leader. Currently Steven is working with a reputed firm in India.
+            </p>
           </div>
         </div>
       </section>
@@ -271,7 +324,7 @@
           Apologetics. The involvement of the Members of the Advisory Board in
           no way reflects endorsement or involvement of their ministries or
           churches unless stated otherwise by the concerned Advisory Board
-          Member and SAFT Apologetics. (The following list of Advisory Board
+          Member and SAFT Apologetics.(The following list of Advisory Board
           Members is not exhaustive)
         </p>
 
@@ -388,57 +441,11 @@ export default {
   head: {
     title: 'About Us | SAFT Apologetics',
   },
+
   data() {
     return {
       isOpen: 0,
       index: 0,
-      coreTeamDetails: [
-        {
-          name: 'Jacob Varghese',
-          body: `
-        Born to parents hailing from Kerala, who to the dismay and resistance of
-        his grandparents decided to follow God and know Him through scripture
-        alone, instead of traditions, Jacob understood the necessity of placing
-        God’s sovereign will above all. He completed his undergrad in economics
-        in Kolkata and has been involved with church ministry, youth ministry
-        (ICPF UAE) and campus ministry (India Campus Crusade for Christ). He is
-        currently serving as Reasonable Faith Chapter Director, Ajman, UAE. He
-        loves music, cricket and is a fan of coffee- black or cream! He also has
-        an amazing younger sister who often makes him feel that he is the
-        younger sibling. 😉
-          `,
-          image: require('@/assets/jacob-varghese.jpg'),
-        },
-        {
-          name: 'Ankit Nayak',
-          body: `
-        Ankit has been an active part of Assembly of God Church ministries in
-        Kolkata and India Campus Crusade for Christ. Passionate about learning,
-        he completed multiple courses ranging from Rave Lifestyle Journey,
-        Graduate Evangelism Training Programme from India Campus Crusade for
-        Christ and a diploma in theology (about discipleship and the book of
-        Galatians) from Bible Education by Extension International (BEE
-        International). At present, he is ministering in his university
-        shouldering the leadership role of the ICCC fellowship. He was born and
-        brought up in a missionary family currently spearheading India Campus
-        Crusade for Christ in their respective designations and area in India.
-        He has a keen interest in music and technology. Right now he is pursuing
-        Engineering with Artificial Intelligence. Working alongside Jacob in
-        SAFT, he is able to identify the need for educating people with the
-        evidence of faith and considers it a privilege to use his expertise and
-        interest in apologetics for God's glory. He loves singing and playing
-        guitar for God's glory.
-          `,
-          image: require('@/assets/ankit-nayak.jpg'),
-        },
-        {
-          name: 'Steven John',
-          body: `
-          Steven is a person.
-          `,
-          image: require('@/assets/steven-john.jpg'),
-        },
-      ],
     }
   },
 }
@@ -464,7 +471,7 @@ img.is-256x256 {
 }
 
 .text-stuff {
-  background-image: url('../../assets/text-stuff.png');
+  background-image: url('~assets/text-stuff.png');
   background-repeat: no-repeat;
   @apply absolute;
   top: -60%;
