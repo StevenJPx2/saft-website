@@ -100,6 +100,7 @@ export default {
     }
 
     .links {
+      display: flex !important;
       @apply my-0;
       @apply flex-row;
       @apply ml-auto;
