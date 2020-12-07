@@ -89,7 +89,7 @@ export default {
   }
 }
 
-@screen md {
+@screen lg {
   #navbar {
     #typeform {
       width: 358px;
