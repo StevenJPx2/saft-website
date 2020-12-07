@@ -47,10 +47,10 @@ export default {
 #navbar {
   @apply px-6;
   @apply py-4;
-  @apply flex;
-  @apply flex-wrap;
+  @apply grid;
   @apply items-center;
   @apply shadow-lg;
+  grid-template-columns: auto auto;
 
   background-color: #001f6d;
 
@@ -91,6 +91,9 @@ export default {
 
 @screen lg {
   #navbar {
+    @apply flex;
+    @apply flex-wrap;
+
     #typeform {
       width: 358px;
     }
