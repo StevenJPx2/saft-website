@@ -132,7 +132,7 @@ footer {
   #footer {
     @apply grid;
     grid-template-rows: max-content auto;
-    @apply mx-3;
+    @apply px-4;
     @apply my-4;
     height: 640px;
     @apply text-white;
@@ -189,8 +189,8 @@ footer {
     @apply place-items-center;
 
     #footer {
-      // @apply place-items-center;
       @apply pt-16;
+      @apply px-6;
       height: 500px;
       @apply grid-cols-2;
       width: Min(1100px, 100%);
@@ -207,7 +207,7 @@ footer {
   }
 }
 
-@screen lg {
+@screen xl {
   #navbar {
     @apply flex;
     @apply flex-wrap;
@@ -234,6 +234,10 @@ footer {
         }
       }
     }
+  }
+
+  #footer {
+    @apply px-0;
   }
 }
 </style>
