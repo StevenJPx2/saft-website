@@ -135,7 +135,6 @@ footer {
     @apply mx-3;
     @apply my-4;
     height: 640px;
-    @apply w-full;
     @apply text-white;
 
     #info {
