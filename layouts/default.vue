@@ -29,7 +29,7 @@
     </nav>
     <Nuxt />
     <footer>
-      <div id="footer" class="container">
+      <div id="footer">
         <div id="info">
           <h3>SAFT APOLOGETICS</h3>
           <a href="#"><icon type="fab" name="instagram" /></a>
