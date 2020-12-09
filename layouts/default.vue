@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="outer">
     <nav id="navbar">
       <img
         id="typeform"
@@ -20,7 +20,7 @@
         <ul>
           <a href="#">Podcast</a>
         </ul>
-        <ul id="patreon-link">
+        <ul class="patreon-link">
           <a href="#" target="_blank">
             Support Us <icon class="ml-1" name="patreon" type="fab" />
           </a>
@@ -28,6 +28,37 @@
       </li>
     </nav>
     <Nuxt />
+    <footer>
+      <div id="footer" class="container">
+        <div id="info">
+          <h3>SAFT APOLOGETICS</h3>
+          <a href="#"><icon type="fab" name="instagram" /></a>
+          <a href="#"><icon type="fab" name="youtube" /></a>
+          <a href="#"><icon type="fab" name="facebook" /></a>
+          <a href="#"><icon name="envelope" /></a>
+          <p>
+            Copyright © 2020<br />
+            All Rights Reserved by SAFT
+          </p>
+        </div>
+        <li class="sitemap">
+          <ul>
+            <a href="#">Home</a>
+          </ul>
+          <ul>
+            <a href="#">About</a>
+          </ul>
+          <ul>
+            <a href="#">Podcast</a>
+          </ul>
+          <ul class="patreon-link">
+            <a href="#" target="_blank">
+              <icon class="mr-2" name="patreon" type="fab" />Support Us
+            </a>
+          </ul>
+        </li>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -44,6 +75,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#outer {
+  @apply grid;
+  grid-template-rows: auto 1fr auto;
+  @apply h-screen;
+}
+
 #navbar {
   @apply px-6;
   @apply py-4;
@@ -79,11 +116,93 @@ export default {
       @apply font-bold;
       @apply tracking-widest;
 
-      &#patreon-link {
+      &.patreon-link {
         background-color: #f76754;
         @apply mr-0;
         @apply mt-2;
         @apply px-6;
+      }
+    }
+  }
+}
+
+footer {
+  background-color: #001f6d;
+
+  #footer {
+    @apply grid;
+    grid-template-rows: max-content auto;
+    @apply mx-3;
+    @apply my-4;
+    height: 640px;
+    @apply w-full;
+    @apply text-white;
+
+    #info {
+      width: Min(300px, 100%);
+
+      h3 {
+        @apply text-3xl;
+        @apply leading-none;
+        @apply font-bold;
+        @apply mb-6;
+      }
+
+      a {
+        @apply text-3xl;
+        @apply mr-8;
+      }
+
+      p {
+        @apply mt-6;
+        @apply text-sm;
+      }
+    }
+
+    .sitemap {
+      @apply row-start-1;
+      @apply list-none;
+      @apply font-medium;
+
+      ul {
+        @apply mb-4;
+
+        &.patreon-link {
+          @apply pt-2;
+          @apply pb-12;
+
+          a {
+            background-color: #f76754;
+            @apply w-max;
+            @apply rounded-sm;
+            @apply px-4;
+            @apply py-2;
+          }
+        }
+      }
+    }
+  }
+}
+
+@screen md {
+  footer {
+    @apply grid;
+    @apply place-items-center;
+
+    #footer {
+      // @apply place-items-center;
+      @apply pt-16;
+      height: 500px;
+      @apply grid-cols-2;
+      width: Min(1100px, 100%);
+
+      .info {
+        @apply col-start-1;
+      }
+
+      .sitemap {
+        @apply text-right;
+        @apply col-start-2;
       }
     }
   }
@@ -111,7 +230,7 @@ export default {
       ul {
         @apply px-6;
 
-        &#patreon-link {
+        &.patreon-link {
           @apply mt-0;
         }
       }
