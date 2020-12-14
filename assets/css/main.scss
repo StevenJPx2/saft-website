@@ -2,3 +2,63 @@ html {
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
 }
+
+h1 {
+  font-size: Min(3.75rem, 15vw);
+  @apply leading-none;
+  @apply font-extrabold;
+}
+
+.hero {
+  @apply w-full;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1100px;
+  @apply px-4;
+}
+
+.lighter-gradient {
+  background: linear-gradient(180deg, #4ee9d6 0%, #2e82e6 100%);
+}
+
+.light-gradient {
+  background: linear-gradient(180deg, #4ed6e9 0%, #2e61e6 100%);
+}
+
+.middle-gradient {
+  background: linear-gradient(180deg, #4e9ee9 0%, #2e40e6 100%);
+}
+
+.dark-gradient {
+  background: linear-gradient(180deg, #4b77e8 0%, #291798 100%);
+}
+
+.darker-gradient {
+  background: linear-gradient(180deg, #4b52e8 0%, #5f1798 100%);
+}
+
+.container-light {
+  background: #f0f3ff;
+}
+
+.container-dark {
+  background: #4160cc;
+}
+
+.container-dark,
+.container-light {
+  @apply w-full;
+  @apply my-6;
+  @apply py-8;
+}
+
+@screen md {
+  .container-light,
+  .container-dark {
+    @apply py-12;
+    border-left: 1.5rem solid white;
+    border-right: 1.5rem solid white;
+  }
+}

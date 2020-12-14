@@ -10,7 +10,7 @@
       <a href="#" id="hamburger" @click="hamburgerClick()">
         <img src="@/assets/hamburger-icon.svg" alt="Menu" />
       </a>
-      <li class="links hidden">
+      <li class="hidden links">
         <ul>
           <a href="#">Home</a>
         </ul>
@@ -89,7 +89,7 @@ export default {
   @apply shadow-lg;
   grid-template-columns: auto auto;
 
-  background-color: #001f6d;
+  background-color: #002586;
 
   #typeform {
     width: 237px;
@@ -127,7 +127,7 @@ export default {
 }
 
 footer {
-  background-color: #001f6d;
+  background-color: #002586;
 
   #footer {
     @apply grid;
