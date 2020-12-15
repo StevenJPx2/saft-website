@@ -58,7 +58,7 @@
         </div>
 
         <div id="about-us--desc">
-          <h2 class="uppercase">Who we we?</h2>
+          <h2 class="uppercase">Who are we?</h2>
           <p>
             We are a web-based ministry that aims to equip the believer defend
             their faith so that they may effectively evangelise.
