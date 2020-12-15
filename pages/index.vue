@@ -136,20 +136,28 @@
       </article>
 
       <article class="podcast--buttons">
-        <a href="#"
+        <a
+          href="https://podcasts.apple.com/in/podcast/saft-podcast/id1511404295"
+          target="_blank"
           ><img
             src="@/assets/apple-podcasts.png"
             alt="Listen on Apple Podcasts"
         /></a>
-        <a href="#"
+        <a
+          href="https://podcasts.google.com/?feed=aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xMDM0NjcxLnJzcw=="
+          target="_blank"
           ><img
             src="@/assets/google-podcasts.png"
             alt="Listen on Google Podcasts"
         /></a>
-        <a href="#"
+        <a
+          href="https://open.spotify.com/show/4hOLouY5QFv3KuNNDUi5hM"
+          target="_blank"
           ><img src="@/assets/spotify-podcasts.png" alt="Listen on Spotify"
         /></a>
-        <a href="#"
+        <a
+          href="https://www.youtube.com/channel/UCBDroMQT6UM9RCK3vjdW6dA/videos"
+          target="_blank"
           ><img src="@/assets/youtube-podcasts.png" alt="Watch on Youtube"
         /></a>
       </article>
