@@ -130,14 +130,11 @@
         <h2 class="mb-3 text-5xl uppercase">Saft Podcast</h2>
         <p class="text-xl">Listen to our latest episode here.</p>
       </article>
+
       <article class="podcast--preview">
         <div id="buzzsprout-small-player-1034671"></div>
-        <script
-          type="text/javascript"
-          charset="utf-8"
-          src="https://www.buzzsprout.com/1034671.js?container_id=buzzsprout-small-player-1034671&player=small&limit=1"
-        ></script>
       </article>
+
       <article class="podcast--buttons">
         <a href="#"
           ><img
@@ -165,8 +162,24 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "SAFT Apologetics",
+      script: [
+        {
+          type: "text/javascript",
+          charset: "utf-8",
+          src:
+            "https://www.buzzsprout.com/1034671.js?container_id=buzzsprout-small-player-1034671&player=small&limit=1",
+          body: true,
+        },
+      ],
+    };
+  },
+
   created() {
     this.$store.commit("page", 0);
+    this.$router;
   },
 };
 </script>
