@@ -345,6 +345,8 @@ export default {
   &--buttons {
     @apply relative;
     height: 300px;
+    @apply mx-auto;
+    width: Min(500px, 100%);
 
     a {
       @apply block;
@@ -422,9 +424,9 @@ export default {
     }
 
     &--buttons {
+      @apply mx-0;
       @apply row-start-2;
       @apply col-start-1;
-      width: 80%;
     }
   }
 }
