@@ -11,17 +11,17 @@
         <img src="@/assets/hamburger-icon.svg" alt="Menu" />
       </a>
       <li class="hidden links">
-        <ul>
-          <a href="#">Home</a>
+        <ul :class="{ active: this.$store.state.pageNo == 0 }">
+          <nuxt-link to="/">Home</nuxt-link>
         </ul>
-        <ul>
-          <a href="#">About</a>
+        <ul :class="{ active: this.$store.state.pageNo == 1 }">
+          <nuxt-link to="/about">About</nuxt-link>
         </ul>
-        <ul>
-          <a href="#">Podcast</a>
+        <ul :class="{ active: this.$store.state.pageNo == 2 }">
+          <nuxt-link to="/podcast">Podcast</nuxt-link>
         </ul>
         <ul class="patreon-link">
-          <a href="#" target="_blank">
+          <a href="https://www.patreon.com/saftapologetics" target="_blank">
             Support Us <icon class="ml-1" name="patreon" type="fab" />
           </a>
         </ul>
@@ -32,10 +32,16 @@
       <div id="footer">
         <div id="info">
           <h3>SAFT APOLOGETICS</h3>
-          <a href="#"><icon type="fab" name="instagram" /></a>
-          <a href="#"><icon type="fab" name="youtube" /></a>
-          <a href="#"><icon type="fab" name="facebook" /></a>
-          <a href="#"><icon name="envelope" /></a>
+          <a href="https://www.instagram.com/saftapologetics/"
+            ><icon type="fab" name="instagram"
+          /></a>
+          <a href="https://www.youtube.com/channel/UCBDroMQT6UM9RCK3vjdW6dA/"
+            ><icon type="fab" name="youtube"
+          /></a>
+          <a href="https://www.facebook.com/saftapologetics/"
+            ><icon type="fab" name="facebook"
+          /></a>
+          <a href="mailto:info@saftapologetics.com"><icon name="envelope" /></a>
           <p>
             Copyright © 2020<br />
             All Rights Reserved by SAFT
@@ -43,16 +49,16 @@
         </div>
         <li class="sitemap">
           <ul>
-            <a href="#">Home</a>
+            <nuxt-link to="/">Home</nuxt-link>
           </ul>
           <ul>
-            <a href="#">About</a>
+            <nuxt-link to="/about">About</nuxt-link>
           </ul>
           <ul>
-            <a href="#">Podcast</a>
+            <nuxt-link to="/podcast">Podcast</nuxt-link>
           </ul>
           <ul class="patreon-link">
-            <a href="#" target="_blank">
+            <a href="https://www.patreon.com/saftapologetics" target="_blank">
               <icon class="mr-2" name="patreon" type="fab" />Support Us
             </a>
           </ul>
@@ -132,6 +138,7 @@ footer {
   #footer {
     @apply grid;
     grid-template-rows: max-content auto;
+    @apply pt-8;
     @apply px-4;
     @apply my-4;
     height: 640px;
@@ -228,6 +235,10 @@ footer {
 
       ul {
         @apply px-6;
+
+        &.active {
+          background: #1a44b2;
+        }
 
         &.patreon-link {
           @apply mt-0;

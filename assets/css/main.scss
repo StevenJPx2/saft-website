@@ -4,9 +4,49 @@ html {
 }
 
 h1 {
-  font-size: Min(3.75rem, 15vw);
-  @apply leading-none;
+  @apply text-6xl;
   @apply font-extrabold;
+}
+
+h2 {
+  @apply text-3xl;
+  @apply font-bold;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+blockquote {
+  @apply text-center;
+  @apply text-3xl;
+  font-family: "Arbutus Slab", serif;
+}
+
+.btn {
+  @apply rounded-md;
+  @apply bg-black;
+  @apply block;
+  @apply text-white;
+  @apply py-3;
+  @apply px-4;
+  @apply font-semibold;
+  @apply w-max;
+  @apply transition-all;
+  @apply ease-in-out;
+  @apply duration-100;
+  @apply outline-none;
+  height: max-content;
+
+  &:hover {
+    background-color: lighten($color: #000000, $amount: 20%);
+    transform: scale(1.1, 1.1);
+  }
+
+  &:active {
+    background-color: lighten($color: #000000, $amount: 10%);
+    transform: scale(0.9, 0.9);
+  }
 }
 
 .hero {
