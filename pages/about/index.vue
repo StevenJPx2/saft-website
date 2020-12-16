@@ -6,7 +6,8 @@
         <p class="mb-3">
           SAFT Apologetics made public appearance on June 1, 2019. The goal of
           SAFT Apologetics is captured in our title - 'Seeking Answers Finding
-          Truth'. We seek to stir conversations about the most important
+          Truth' and is derived off inspiration from late Nabeel Qureshi's
+          autobiography. We seek to stir conversations about the most important
           questions of mankind. To seek answers honestly is of utmost priority.
           We believe that the God who revealed His invisible attributes in
           nature (Romans 1:20) is close to those who seek Him honestly (Acts
