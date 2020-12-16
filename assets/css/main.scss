@@ -5,6 +5,7 @@ html {
 
 h1 {
   font-size: Min(10vw, 3rem);
+  line-height: 2rem;
   @apply font-bold;
   @apply uppercase;
 }
@@ -106,6 +107,10 @@ blockquote {
 }
 
 @screen md {
+  h1 {
+    line-height: 3rem;
+  }
+
   .container-light,
   .container-dark {
     @apply py-12;
