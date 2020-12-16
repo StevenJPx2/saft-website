@@ -4,8 +4,9 @@ html {
 }
 
 h1 {
-  @apply text-6xl;
-  @apply font-extrabold;
+  font-size: Min(10vw, 3rem);
+  @apply font-bold;
+  @apply uppercase;
 }
 
 h2 {
@@ -59,6 +60,12 @@ blockquote {
   @apply px-4;
 }
 
+.text-article {
+  margin: 0 auto;
+  max-width: 800px;
+  @apply px-4;
+}
+
 .lighter-gradient {
   background: linear-gradient(180deg, #4ee9d6 0%, #2e82e6 100%);
 }
@@ -79,16 +86,20 @@ blockquote {
   background: linear-gradient(180deg, #4b52e8 0%, #5f1798 100%);
 }
 
-.container-light {
+.container-light,
+.hero-light {
   background: #f0f3ff;
 }
 
-.container-dark {
+.container-dark,
+.hero-dark {
   background: #4160cc;
 }
 
 .container-dark,
-.container-light {
+.container-light,
+.hero-light,
+.hero-dark {
   @apply w-full;
   @apply my-6;
   @apply py-8;

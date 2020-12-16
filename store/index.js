@@ -3,7 +3,7 @@ export const state = () => ({
 });
 
 export const mutations = {
-  page(pageNo) {
+  page(state, pageNo) {
     state.pageNo = pageNo;
   },
 };

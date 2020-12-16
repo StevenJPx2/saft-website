@@ -81,12 +81,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#outer {
-  @apply grid;
-  grid-template-rows: auto 1fr auto;
-  @apply h-screen;
-}
-
 #navbar {
   @apply px-6;
   @apply py-4;
@@ -140,7 +134,7 @@ footer {
     grid-template-rows: max-content auto;
     @apply pt-8;
     @apply px-4;
-    @apply my-4;
+    @apply mt-4;
     height: 640px;
     @apply text-white;
 

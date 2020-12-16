@@ -10,7 +10,12 @@
           id="main-circle-2"
           class="rounded-full shadow-xl dark-gradient"
         ></div>
-        <h1 class="relative w-5/6 md:w-1/2">SEEKING ANSWERS, FINDING TRUTH.</h1>
+        <h1
+          class="relative w-5/6 font-extrabold md:w-1/2"
+          style="line-height: 3.15rem"
+        >
+          SEEKING ANSWERS, FINDING TRUTH.
+        </h1>
       </div>
     </header>
 
@@ -72,9 +77,9 @@
           </p>
           <div class="flex w-full mt-4">
             <div class="w-full"></div>
-            <a href="#" class="flex-none btn"
+            <nuxt-link to="/about#core-team" class="flex-none btn"
               >More<icon class="ml-2" name="arrow-right" />
-            </a>
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -118,16 +123,16 @@
             Alliance, Canada
           </h4>
         </section>
-        <a
-          href="#"
+        <nuxt-link
+          to="/about#endorsements"
           class="mt-4 btn md:col-start-2 md:row-start-4 place-self-end"
           >More<icon class="ml-2" name="arrow-right" />
-        </a>
+        </nuxt-link>
       </div>
     </section>
     <section class="container podcast">
       <article class="podcast--title">
-        <h2 class="mb-3 text-5xl uppercase">Saft Podcast</h2>
+        <h1 class="mb-3">Saft Podcast</h1>
         <p class="text-xl">Listen to our latest episode here.</p>
       </article>
 
@@ -187,7 +192,6 @@ export default {
 
   created() {
     this.$store.commit("page", 0);
-    this.$router;
   },
 };
 </script>
@@ -199,7 +203,7 @@ export default {
   background-color: #001f6d;
   height: 87vh;
   @apply items-center;
-  @apply overflow-x-hidden;
+  @apply overflow-hidden;
 
   h1 {
     font-size: Min(3.75rem, 15vw);
@@ -332,9 +336,6 @@ export default {
   @apply grid;
   @apply py-16;
   @apply gap-y-8;
-
-  &--title {
-  }
 
   &--preview {
     @apply w-full;
