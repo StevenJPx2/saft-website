@@ -13,23 +13,24 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-regular-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.4",
     "@nuxtjs/fontawesome": "^1.1.2",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6",
+    "gsap": "^3.5.1",
+    "nuxt": "^2.14.12",
     "nuxt-fontawesome": "^0.4.0"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^3.3.3",
+    "@nuxtjs/tailwindcss": "^3.3.4",
     "autoprefixer": "^9.8.6",
     "eslint-config-prettier": "^6.12.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-prettier": "^3.3.0",
     "fibers": "^5.0.0",
     "node-sass": "^5.0.0",
     "postcss": "^7.0.35",
     "prettier": "^2.1.2",
     "sass": "^1.30.0",
     "sass-loader": "^10.1.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2"
   }
 }

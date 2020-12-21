@@ -5,7 +5,7 @@ html {
 
 h1 {
   font-size: Min(10vw, 3rem);
-  line-height: 2rem;
+  line-height: Max(8vw, 2rem);
   @apply font-bold;
   @apply uppercase;
 }

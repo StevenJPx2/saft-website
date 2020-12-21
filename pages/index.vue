@@ -13,6 +13,7 @@
         <h1
           class="relative w-5/6 font-extrabold md:w-1/2"
           style="line-height: 3.15rem"
+          aos
         >
           SEEKING ANSWERS, FINDING TRUTH.
         </h1>
@@ -63,14 +64,14 @@
         </div>
 
         <div id="about-us--desc">
-          <h2 class="uppercase">Who are we?</h2>
-          <p>
+          <h2 class="uppercase" aos>Who are we?</h2>
+          <p aos>
             We are a web-based ministry that aims to equip the believer defend
             their faith so that they may effectively evangelise.
           </p>
           <br />
-          <h2 class="uppercase">What do we do?</h2>
-          <p>
+          <h2 class="uppercase" aos>What do we do?</h2>
+          <p aos>
             We live out our Mission and Vision by airing our bi-weekly SAFT
             Podcast and engaging with live audience across languages via open
             forums.
@@ -166,14 +167,19 @@
           ><img src="@/assets/youtube-podcasts.png" alt="Watch on Youtube"
         /></a>
       </article>
-      <a href="#" class="mt-4 btn md:col-start-2 md:row-start-4 place-self-end"
+      <nuxt-link
+        to="/podcast"
+        class="mt-4 btn md:col-start-2 md:row-start-4 place-self-end"
         >More<icon class="ml-2" name="arrow-right" />
-      </a>
+      </nuxt-link>
     </section>
   </div>
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
 export default {
   head() {
     return {
@@ -188,6 +194,50 @@ export default {
         },
       ],
     };
+  },
+
+  mounted() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.querySelectorAll("[aos]").forEach((el) => {
+      gsap.fromTo(
+        el,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: el,
+            toggleActions: "restart reset play reverse",
+          },
+        }
+      );
+    });
+
+    document.querySelectorAll(".btn").forEach((el) => {
+      gsap.fromTo(
+        el,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: el,
+            toggleActions: "restart reset play reverse",
+          },
+        }
+      );
+    });
   },
 
   created() {

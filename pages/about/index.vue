@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="container py-12 about-us">
+    <section class="container pt-12 about-us">
       <h1 class="mb-8">About Us</h1>
       <article class="about-us--desc">
         <p class="mb-3">
@@ -26,14 +26,17 @@
         </p>
       </article>
     </section>
-    <section class="hidden circles">
-      <div>
-        <div class="rounded-full h-72 w-72 light-gradient"></div>
-        <div class="rounded-full w-36 h-36 middle-gradient"></div>
-        <div class="w-20 h-20 rounded-full dark-gradient"></div>
-      </div>
+
+    <section class="overflow-x-hidden">
+      <div
+        class="relative w-48 h-48 rounded-full shadow-2xl left-3/4 md:h-72 md:w-72 light-gradient"
+      ></div>
+      <div
+        class="relative w-24 h-24 rounded-full shadow-2xl -top-14 left-2/4 md:left-2/3 md:h-32 md:w-32 middle-gradient"
+      ></div>
     </section>
-    <section class="from-founder container-light">
+
+    <section class="mt-0 from-founder container-light">
       <article class="text-article">
         <h1 class="mb-8">From Founder's Desk</h1>
         <div class="from-founder--text">
@@ -150,8 +153,14 @@
       </article>
     </section>
 
-    <section id="core-team" class="container pt-12 core-team">
-      <h1 class="mb-32">Our Core Team</h1>
+    <section class="pt-10 overflow-x-hidden pb-14">
+      <div
+        class="relative w-48 h-48 rounded-full shadow-2xl -left-20 md:h-72 md:w-72 dark-gradient"
+      ></div>
+    </section>
+
+    <section id="core-team" class="container pt-6 md:pt-0 core-team">
+      <h1 class="mb-24 md:mb-32">Our Core Team</h1>
       <article class="core-team--card">
         <img src="@/assets/jacob-varghese.jpg" alt="Jacob Varghese" />
         <h3>Jacob Varghese</h3>
@@ -209,6 +218,7 @@
       </article>
     </section>
 
+    <section class="my-10"></section>
     <section class="container-light">
       <div class="container">
         <h1 class="mb-8">Advisory Board</h1>
@@ -247,8 +257,15 @@
       </div>
     </section>
 
+    <section class="pt-10 overflow-x-hidden pb-14">
+      <div
+        class="relative w-48 h-48 rounded-full shadow-2xl md:absolute md:h-72 md:w-72 darker-gradient"
+        style="left: 75%"
+      ></div>
+    </section>
+
     <section id="endorsements" class="container endorsements">
-      <h1 class="my-12 md:my-24">Endorsements</h1>
+      <h1 class="mb-12 md:mb-24">Endorsements</h1>
       <article class="endorsements--card">
         <p>
           SAFT Apologetics has risen to the challenges of skepticism and doubt
@@ -507,7 +524,7 @@ export default {
     img {
       @apply rounded-xl;
       @apply mb-6;
-      width: 300px;
+      max-width: 300px;
     }
     h3 {
       @apply text-3xl;
@@ -533,6 +550,7 @@ export default {
     @apply flex-1;
     @apply text-center;
     @apply mb-12;
+    @apply px-3;
 
     img {
       width: 210px;
