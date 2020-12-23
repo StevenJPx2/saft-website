@@ -1,8 +1,8 @@
 <template>
   <div class="mt-16">
     <section class="container">
-      <h1 class="mb-8">SAFT Podcast</h1>
-      <p>
+      <h1 class="mb-8" aos>SAFT Podcast</h1>
+      <p aos>
         SAFT Podcast brings to you the coherent, cohesive, logical, and relevant
         defense of the Christian worldview. From layman to experts in the field,
         everyone can tune in and be equipped. We also aim to introduce to the
@@ -12,12 +12,12 @@
         minds of the Christian Apologetics arena.
       </p>
       <br />
-      <p>Listen to our latest episode here.</p>
+      <p aos>Listen to our latest episode here.</p>
 
       <div class="podcast">
         <article class="podcast--preview">
-          <div id="buzzsprout-small-player-1034671"></div>
-          <a href="https://saftpodcast.buzzsprout.com/" target="_blank"
+          <div id="buzzsprout-small-player-1034671" aos></div>
+          <a href="https://saftpodcast.buzzsprout.com/" target="_blank" aos
             ><img src="@/assets/buzzsprout-icon.svg" /> Visit our podcast
             website</a
           >
@@ -27,6 +27,7 @@
           <a
             href="https://podcasts.apple.com/in/podcast/saft-podcast/id1511404295"
             target="_blank"
+            aos
             ><img
               src="@/assets/apple-podcasts.png"
               alt="Listen on Apple Podcasts"
@@ -34,6 +35,7 @@
           <a
             href="https://podcasts.google.com/?feed=aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xMDM0NjcxLnJzcw=="
             target="_blank"
+            aos
             ><img
               src="@/assets/google-podcasts.png"
               alt="Listen on Google Podcasts"
@@ -41,11 +43,13 @@
           <a
             href="https://open.spotify.com/show/4hOLouY5QFv3KuNNDUi5hM"
             target="_blank"
+            aos
             ><img src="@/assets/spotify-podcasts.png" alt="Listen on Spotify"
           /></a>
           <a
             href="https://www.youtube.com/channel/UCBDroMQT6UM9RCK3vjdW6dA/videos"
             target="_blank"
+            aos
             ><img src="@/assets/youtube-podcasts.png" alt="Watch on Youtube"
           /></a>
         </article>
@@ -54,20 +58,20 @@
 
     <section class="hero-dark">
       <div class="container flex flex-wrap">
-        <article class="mb-16 infograph">
+        <article class="mb-16 infograph" aos>
           <p class="infograph--title">Our podcast is heard across...</p>
           <header class="infograph--info">
-            <h3 class="infograph--info--title">33</h3>
+            <h3 class="infograph--info--title" id="country-no">0</h3>
             <p class="infograph--info--subtitle">countries</p>
           </header>
           <p class="infograph--sep">and</p>
           <header class="infograph--info">
-            <h3 class="infograph--info--title">6</h3>
+            <h3 class="infograph--info--title" id="continent-no">0</h3>
             <p class="infograph--info--subtitle">continents</p>
           </header>
         </article>
 
-        <article class="infograph">
+        <article class="infograph" aos>
           <p class="infograph--title">We’re heard most in...</p>
           <header class="infograph--info">
             <h3 class="infograph--info--title">
@@ -87,9 +91,9 @@
     </section>
 
     <section class="container">
-      <h1 class="mt-16 mb-24">Guests</h1>
+      <h1 class="mt-16 mb-24" aos>Guests</h1>
       <div class="flex flex-wrap">
-        <article v-for="(name, index) in guests" :key="index" class="guest">
+        <article v-for="(name, index) in guests" :key="index" class="guest" aos>
           <img
             :src="
               require(`@/assets/${name.toLowerCase().replace(/\s/g, '-')}.jpg`)
@@ -104,6 +108,9 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
 export default {
   head() {
     return {
@@ -117,11 +124,108 @@ export default {
           body: true,
         },
       ],
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: `SAFT Podcast brings to you the coherent, cohesive, 
+          logical, and relevant defense of the Christian worldview. 
+          From layman to experts in the field, everyone can tune in and be equipped.`,
+        },
+      ],
     };
   },
 
   mounted() {
     this.$store.commit("page", 2);
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    let val = { country: 0, continent: 0 };
+
+    document.querySelectorAll("[aos]").forEach((el) => {
+      gsap.fromTo(
+        el,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.3,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: el,
+            toggleActions: "restart continue play reverse",
+          },
+        }
+      );
+    });
+
+    document.querySelectorAll(".btn").forEach((el) => {
+      gsap.fromTo(
+        el,
+        {
+          opacity: 0,
+          scale: 1.2,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 2,
+          ease: "elastic.out(1, 0.3)",
+          scrollTrigger: {
+            trigger: el,
+            toggleActions: "restart continue play reverse",
+          },
+        }
+      );
+    });
+
+    document.querySelectorAll(".scroll-circle").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { y: 0 },
+        {
+          y: 30,
+          scrollTrigger: {
+            trigger: el,
+            scrub: true,
+            start: "top center",
+            end: "bottom center",
+          },
+        }
+      );
+    });
+
+    gsap.from("#country-no", {
+      ease: "power.in",
+      duration: 0.7,
+      onUpdate: () => {
+        document.querySelector("#country-no").innerHTML =
+          val.country >= 33 ? 33 : ++val.country;
+      },
+      scrollTrigger: {
+        trigger: "#country-no",
+        start: "top center",
+        end: "bottom center",
+      },
+    });
+
+    gsap.from("#continent-no", {
+      ease: "power.in",
+      duration: 0.7,
+      onUpdate: () => {
+        document.querySelector("#continent-no").innerHTML =
+          val.country >= 6 ? 6 : ++val.country;
+      },
+      scrollTrigger: {
+        trigger: "#continent-no",
+        start: "top center",
+        end: "bottom center",
+      },
+    });
   },
 
   data() {

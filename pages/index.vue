@@ -2,16 +2,18 @@
   <div>
     <header class="hero main-header">
       <div class="container text-white">
-        <div
-          id="main-circle"
-          class="rounded-full shadow-xl light-gradient"
-        ></div>
-        <div
-          id="main-circle-2"
-          class="rounded-full shadow-xl dark-gradient"
-        ></div>
+        <div class="relative top-12 left-2/4 w-max">
+          <div
+            id="main-circle"
+            class="rounded-full shadow-xl light-gradient"
+          ></div>
+          <div
+            id="main-circle-2"
+            class="relative rounded-full shadow-xl dark-gradient -left-20 -top-14"
+          ></div>
+        </div>
         <h1
-          class="relative w-5/6 font-extrabold md:w-1/2"
+          class="absolute z-10 w-4/6 font-extrabold top-1/3 md:w-1/4"
           style="line-height: 3.15rem"
           aos
         >
@@ -64,18 +66,22 @@
         </div>
 
         <div id="about-us--desc">
-          <h2 class="uppercase" aos>Who are we?</h2>
-          <p aos>
-            We are a web-based ministry that aims to equip the believer defend
-            their faith so that they may effectively evangelise.
-          </p>
+          <div aos>
+            <h2 class="uppercase">Who are we?</h2>
+            <p>
+              We are a web-based ministry that aims to equip the believer defend
+              their faith so that they may effectively evangelise.
+            </p>
+          </div>
           <br />
-          <h2 class="uppercase" aos>What do we do?</h2>
-          <p aos>
-            We live out our Mission and Vision by airing our bi-weekly SAFT
-            Podcast and engaging with live audience across languages via open
-            forums.
-          </p>
+          <div aos>
+            <h2 class="uppercase">What do we do?</h2>
+            <p>
+              We live out our Mission and Vision by airing our bi-weekly SAFT
+              Podcast and engaging with live audience across languages via open
+              forums.
+            </p>
+          </div>
           <div class="flex w-full mt-4">
             <div class="w-full"></div>
             <nuxt-link to="/about#core-team" class="flex-none btn"
@@ -88,14 +94,14 @@
 
     <section class="container relative py-24">
       <div id="tagline" class="flex items-center">
-        <blockquote class="z-10 my-auto">
+        <blockquote class="z-10 my-auto" aos>
           Equipping the believer defend their faith anytime, anywhere.
         </blockquote>
       </div>
     </section>
     <section class="container-light">
       <div class="container endorsements">
-        <section class="endorsements--card">
+        <section class="endorsements--card" aos>
           <p class="endorsements--card--desc">
             They are building a great resource and a much-needed ministry...
           </p>
@@ -104,7 +110,7 @@
             Founder-Emeritus, Apologetics315
           </h4>
         </section>
-        <section class="endorsements--card md:row-start-2 md:col-start-2">
+        <section class="endorsements--card md:row-start-2 md:col-start-2" aos>
           <p class="endorsements--card--desc">
             ...My Best Wishes, Prayers and Blessings goes with the SAFT team...
           </p>
@@ -114,7 +120,7 @@
             India
           </h4>
         </section>
-        <section class="endorsements--card md:row-start-3 md:col-start-1">
+        <section class="endorsements--card md:row-start-3 md:col-start-1" aos>
           <p class="endorsements--card--desc">
             ...I highly commend them to you...
           </p>
@@ -133,11 +139,11 @@
     </section>
     <section class="container podcast">
       <article class="podcast--title">
-        <h1 class="mb-3">Saft Podcast</h1>
-        <p class="text-xl">Listen to our latest episode here.</p>
+        <h1 class="mb-3" aos>Saft Podcast</h1>
+        <p class="text-xl" aos>Listen to our latest episode here.</p>
       </article>
 
-      <article class="podcast--preview">
+      <article class="podcast--preview" aos>
         <div id="buzzsprout-small-player-1034671"></div>
       </article>
 
@@ -145,6 +151,7 @@
         <a
           href="https://podcasts.apple.com/in/podcast/saft-podcast/id1511404295"
           target="_blank"
+          aos
           ><img
             src="@/assets/apple-podcasts.png"
             alt="Listen on Apple Podcasts"
@@ -152,6 +159,7 @@
         <a
           href="https://podcasts.google.com/?feed=aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xMDM0NjcxLnJzcw=="
           target="_blank"
+          aos
           ><img
             src="@/assets/google-podcasts.png"
             alt="Listen on Google Podcasts"
@@ -159,11 +167,13 @@
         <a
           href="https://open.spotify.com/show/4hOLouY5QFv3KuNNDUi5hM"
           target="_blank"
+          aos
           ><img src="@/assets/spotify-podcasts.png" alt="Listen on Spotify"
         /></a>
         <a
           href="https://www.youtube.com/channel/UCBDroMQT6UM9RCK3vjdW6dA/videos"
           target="_blank"
+          aos
           ><img src="@/assets/youtube-podcasts.png" alt="Watch on Youtube"
         /></a>
       </article>
@@ -193,10 +203,20 @@ export default {
           body: true,
         },
       ],
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: `SAFT is a web-based ministry that aims to equip the believer defend
+              their faith so that they may effectively evangelise.`,
+        },
+      ],
     };
   },
 
   mounted() {
+    this.$store.commit("page", 0);
+
     gsap.registerPlugin(ScrollTrigger);
 
     document.querySelectorAll("[aos]").forEach((el) => {
@@ -209,11 +229,11 @@ export default {
         {
           opacity: 1,
           y: 0,
-          duration: 1,
+          duration: 1.3,
           ease: "power2.inOut",
           scrollTrigger: {
             trigger: el,
-            toggleActions: "restart reset play reverse",
+            toggleActions: "restart continue play reverse",
           },
         }
       );
@@ -224,20 +244,77 @@ export default {
         el,
         {
           opacity: 0,
-          y: 50,
+          scale: 1.2,
         },
         {
           opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power2.inOut",
+          scale: 1,
+          duration: 2,
+          ease: "elastic.out(1, 0.3)",
           scrollTrigger: {
             trigger: el,
-            toggleActions: "restart reset play reverse",
+            toggleActions: "restart continue play reverse",
           },
         }
       );
     });
+
+    document.querySelectorAll(".scroll-circle").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { y: 0 },
+        {
+          y: 30,
+          scrollTrigger: {
+            trigger: el,
+            scrub: true,
+            start: "top center",
+            end: "bottom center",
+          },
+        }
+      );
+    });
+
+    gsap.to("#main-circle", {
+      keyframes: [
+        { x: -5, y: -6 },
+        { x: -7, y: -6.5 },
+        { x: -6.5, y: -7.2 },
+        { x: -5, y: -6 },
+      ],
+      yoyo: true,
+      repeat: -1,
+      ease: "sine.inOut",
+    });
+
+    gsap.to("#main-circle-2", {
+      keyframes: [
+        { x: -5, y: -6 },
+        { x: -7, y: -6.5 },
+        { x: -6.5, y: -7.2 },
+        { x: -5, y: -6 },
+      ],
+      delay: 0.2,
+      yoyo: true,
+      repeat: -1,
+      ease: "sine.inOut",
+    });
+
+    gsap.fromTo(
+      "#founder-images .card",
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 1.5,
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: "#founder-images",
+          toggleActions: "restart continue play reverse",
+        },
+      }
+    );
   },
 
   created() {
@@ -251,7 +328,7 @@ export default {
   @apply flex;
   @apply relative;
   background-color: #001f6d;
-  height: 87vh;
+  height: Max(87vh, 100%);
   @apply items-center;
   @apply overflow-hidden;
 
@@ -260,19 +337,13 @@ export default {
   }
 
   #main-circle {
-    @apply absolute;
     width: 420px;
     height: 420px;
-    left: 286px;
-    top: 75px;
   }
 
   #main-circle-2 {
-    @apply absolute;
     width: 132px;
     height: 132px;
-    left: 160px;
-    top: 378px;
   }
 }
 
@@ -314,21 +385,29 @@ export default {
   }
 
   @apply mb-6;
-  @apply shadow-lg;
   @apply w-max;
   height: max-content;
-  @apply rounded-xl;
-  @apply bg-white;
-  @apply grid;
+  @apply flex;
 
   img {
     @apply rounded-xl;
+    @apply shadow-lg;
     width: 120px;
+    height: 120px;
     @apply row-span-3;
   }
 
   &--details {
     @apply hidden;
+    @apply bg-white;
+    @apply shadow-lg;
+    @apply rounded-r-xl;
+    @apply transition-all;
+    @apply duration-200;
+    @apply ease-in-out;
+    @apply opacity-0;
+    transform: translateX(-100%);
+    width: 300px;
     @apply px-5;
     @apply py-5;
 
@@ -434,16 +513,6 @@ export default {
 @screen md {
   .main-header {
     height: 735px;
-
-    #main-circle {
-      left: 450px;
-      top: 90px;
-    }
-
-    #main-circle-2 {
-      left: 360px;
-      top: 440px;
-    }
   }
 
   #about-us {
@@ -483,16 +552,6 @@ export default {
 }
 
 @screen lg {
-  .main-header {
-    #main-circle {
-      left: 770px;
-    }
-
-    #main-circle-2 {
-      left: 670px;
-    }
-  }
-
   .card {
     &:nth-child(odd) {
       @apply place-self-start;
@@ -500,28 +559,21 @@ export default {
 
     img {
       width: 200px;
+      height: 200px;
+    }
+
+    &--details {
+      @apply block;
     }
 
     &:hover {
       @apply relative;
       @apply z-10;
-      grid-template-columns: max-content 300px;
 
       .card--details {
-        @apply block;
+        @apply opacity-100;
+        transform: translateX(-5%);
       }
-    }
-  }
-}
-
-@screen 2xl {
-  .main-header {
-    #main-circle {
-      left: 1120px;
-    }
-
-    #main-circle-2 {
-      left: 1020px;
     }
   }
 }

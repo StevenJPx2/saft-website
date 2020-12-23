@@ -1,9 +1,9 @@
 <template>
   <div>
     <section class="container pt-12 about-us">
-      <h1 class="mb-8">About Us</h1>
+      <h1 class="mb-8" aos>About Us</h1>
       <article class="about-us--desc">
-        <p class="mb-3">
+        <p class="mb-3" aos>
           SAFT Apologetics made public appearance on June 1, 2019. The goal of
           SAFT Apologetics is captured in our title - 'Seeking Answers Finding
           Truth' and is derived off inspiration from late Nabeel Qureshi's
@@ -15,7 +15,7 @@
           and we believe that the honest seeker will encounter Truth- Christ
           Jesus.
         </p>
-        <p>
+        <p aos>
           The initial area of ministry of SAFT was SAFT Podcast. Through SAFT
           Podcast we bring sound and relevant discussions about God and the case
           for belief in Him. We've featured some of the greatest defenders of
@@ -27,19 +27,21 @@
       </article>
     </section>
 
-    <section class="overflow-x-hidden">
-      <div
-        class="relative w-48 h-48 rounded-full shadow-2xl left-3/4 md:h-72 md:w-72 light-gradient"
-      ></div>
-      <div
-        class="relative w-24 h-24 rounded-full shadow-2xl -top-14 left-2/4 md:left-2/3 md:h-32 md:w-32 middle-gradient"
-      ></div>
+    <section class="overflow-hidden">
+      <div class="relative w-max left-3/4 scroll-circle">
+        <div
+          class="relative w-48 h-48 rounded-full shadow-2xl md:h-72 md:w-72 light-gradient"
+        ></div>
+        <div
+          class="relative w-16 h-16 rounded-full shadow-2xl -top-10 -left-1/4 md:h-28 md:w-28 middle-gradient"
+        ></div>
+      </div>
     </section>
 
-    <section class="mt-0 from-founder container-light">
+    <section class="mt-0 from-founder container-light" aos>
       <article class="text-article">
-        <h1 class="mb-8">From Founder's Desk</h1>
-        <div class="from-founder--text">
+        <h1 class="mb-8" aos>From Founder's Desk</h1>
+        <div class="from-founder--text" aos>
           <p>
             Back in March (2019), right off the back of an adrenaline rush of
             the intellectually stimulating world of Christian apologetics, I
@@ -136,16 +138,16 @@
     <section class="container-dark">
       <article class="container mission-vision">
         <div class="mission-vision--text">
-          <h2>MISSION</h2>
-          <p>
+          <h2 aos>MISSION</h2>
+          <p aos>
             To make the case for and defend our faith in the Triune God of the
             Bible using the tool of apologetics in a manner that can be grasped
             and incorporated by any lay-man so that they may be equipped.
           </p>
         </div>
         <div class="mission-vision--text">
-          <h2>VISION</h2>
-          <p>
+          <h2 aos>VISION</h2>
+          <p aos>
             To break the language and accessibility barrier and make apologetics
             resources within easy reach for all communities in India and beyond.
           </p>
@@ -153,19 +155,19 @@
       </article>
     </section>
 
-    <section class="pt-10 overflow-x-hidden pb-14">
+    <section class="pt-10 overflow-hidden pb-14">
       <div
-        class="relative w-48 h-48 rounded-full shadow-2xl -left-20 md:h-72 md:w-72 dark-gradient"
+        class="relative w-48 h-48 rounded-full shadow-2xl -left-20 md:h-72 md:w-72 dark-gradient scroll-circle"
       ></div>
     </section>
 
     <section id="core-team" class="container pt-6 md:pt-0 core-team">
-      <h1 class="mb-24 md:mb-32">Our Core Team</h1>
+      <h1 class="mb-24 md:mb-32" aos>Our Core Team</h1>
       <article class="core-team--card">
-        <img src="@/assets/jacob-varghese.jpg" alt="Jacob Varghese" />
-        <h3>Jacob Varghese</h3>
-        <h4>Founder - Director</h4>
-        <p>
+        <img src="@/assets/jacob-varghese.jpg" alt="Jacob Varghese" aos />
+        <h3 aos>Jacob Varghese</h3>
+        <h4 aos>Founder - Director</h4>
+        <p aos>
           Born to parents hailing from Kerala, who to the dismay and resistance
           of his grandparents decided to follow God and know Him through
           scripture alone, instead of traditions, Jacob understood the necessity
@@ -180,10 +182,10 @@
       </article>
 
       <article class="core-team--card">
-        <img src="@/assets/ankit-nayak.jpg" alt="Ankit Nayak" />
-        <h3>Ankit Nayak</h3>
-        <h4>Executive Director</h4>
-        <p>
+        <img src="@/assets/ankit-nayak.jpg" alt="Ankit Nayak" aos />
+        <h3 aos>Ankit Nayak</h3>
+        <h4 aos>Executive Director</h4>
+        <p aos>
           Ankit has been an active part of Assembly of God Church ministries in
           Kolkata and India Campus Crusade for Christ. Passionate about
           learning, he completed multiple courses ranging from Rave Lifestyle
@@ -204,10 +206,10 @@
       </article>
 
       <article class="core-team--card">
-        <img src="@/assets/steven-john.jpg" alt="Steven John" />
-        <h3>Steven John</h3>
-        <h4>Chief Editor</h4>
-        <p>
+        <img src="@/assets/steven-john.jpg" alt="Steven John" aos />
+        <h3 aos>Steven John</h3>
+        <h4 aos>Chief Editor</h4>
+        <p aos>
           Steven John has always been an active and passionate evangelism
           oriented student with a deep seated desire to further his innate
           talent in design and coding. Steven had been a pivotal part of ICPF
@@ -218,11 +220,10 @@
       </article>
     </section>
 
-    <section class="my-10"></section>
     <section class="container-light">
       <div class="container">
-        <h1 class="mb-8">Advisory Board</h1>
-        <p>
+        <h1 class="mb-8" aos>Advisory Board</h1>
+        <p aos>
           The Advisory Board of SAFT comprises of God ordained individuals who
           serve as pastors of prominent churches, leaders and senior staff of
           global evangelistic ministries and evangelists who are trailblazers
@@ -235,17 +236,17 @@
           (The following list of Advisory Board Members is not exhaustive)
         </p>
         <article class="advisory-board">
-          <section class="advisory-board--card">
+          <section class="advisory-board--card" aos>
             <img src="@/assets/binu-thampy.jpg" alt="Binu Thampy" />
             <p>Binu Thampy</p>
             <small>Senior Pastor, Equippers Kolkata</small>
           </section>
-          <section class="advisory-board--card">
+          <section class="advisory-board--card" aos>
             <img src="@/assets/brian-auten.jpg" alt="Brian Auten" />
             <p>Brian Auten</p>
             <small>Founder-Emeritus, Apologetics315</small>
           </section>
-          <section class="advisory-board--card">
+          <section class="advisory-board--card" aos>
             <img src="@/assets/jerin-thomas.jpg" alt="Jerin Thomas" />
             <p>Jerin Thomas</p>
             <small
@@ -257,15 +258,15 @@
       </div>
     </section>
 
-    <section class="pt-10 overflow-x-hidden pb-14">
+    <section class="pt-10 overflow-hidden pb-14">
       <div
-        class="relative w-48 h-48 rounded-full shadow-2xl md:absolute md:h-72 md:w-72 darker-gradient"
+        class="relative w-48 h-48 rounded-full shadow-2xl lg:absolute md:h-72 md:w-72 darker-gradient scroll-circle"
         style="left: 75%"
       ></div>
     </section>
 
     <section id="endorsements" class="container endorsements">
-      <h1 class="mb-12 md:mb-24">Endorsements</h1>
+      <h1 class="mb-12 md:mb-24" aos>Endorsements</h1>
       <article class="endorsements--card">
         <p>
           SAFT Apologetics has risen to the challenges of skepticism and doubt
@@ -409,7 +410,7 @@
     </section>
 
     <section class="container-light">
-      <article class="statement text-article">
+      <article class="statement text-article" aos>
         <h1 class="mb-8">Statement of Faith</h1>
         <p>We believe in God the Father Almighty, maker of heaven and earth;</p>
         <p>
@@ -482,15 +483,107 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
 export default {
   head() {
     return {
       title: "SAFT Apologetics | About Us",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: `SAFT Apologetics made public appearance on June 1, 2019. The goal of
+          SAFT Apologetics is captured in our title - 'Seeking Answers Finding
+          Truth' and is derived off inspiration from late Nabeel Qureshi's
+          autobiography. We seek to stir conversations about the most important
+          questions of mankind.`,
+        },
+      ],
     };
   },
 
   mounted() {
     this.$store.commit("page", 1);
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.querySelectorAll("[aos]").forEach((el) => {
+      gsap.fromTo(
+        el,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.3,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: el,
+            toggleActions: "restart continue play reverse",
+          },
+        }
+      );
+    });
+
+    document.querySelectorAll(".btn").forEach((el) => {
+      gsap.fromTo(
+        el,
+        {
+          opacity: 0,
+          scale: 1.2,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 2,
+          ease: "elastic.out(1, 0.3)",
+          scrollTrigger: {
+            trigger: el,
+            toggleActions: "restart continue play reverse",
+          },
+        }
+      );
+    });
+
+    document.querySelectorAll(".scroll-circle").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { y: 0 },
+        {
+          y: 30,
+          scrollTrigger: {
+            trigger: el,
+            scrub: true,
+            start: "top center",
+            end: "bottom center",
+          },
+        }
+      );
+    });
+
+    document.querySelectorAll(".endorsements--card").forEach((el) => {
+      gsap.fromTo(
+        el,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.3,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: el,
+            toggleActions: "restart continue play reverse",
+          },
+        }
+      );
+    });
   },
 };
 </script>

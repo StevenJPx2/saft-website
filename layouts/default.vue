@@ -1,33 +1,67 @@
 <template>
   <div id="outer">
     <nav id="navbar">
-      <img
-        id="typeform"
-        src="@/assets/saft-typeform.svg"
-        alt="SAFT Logo"
-        class="mb-2"
-      />
-      <a href="#" id="hamburger" @click="hamburgerClick()">
-        <img src="@/assets/hamburger-icon.svg" alt="Menu" />
-      </a>
-      <li class="hidden links">
-        <ul :class="{ active: this.$store.state.pageNo == 0 }">
+      <div class="navbar-inner">
+        <img
+          id="typeform"
+          src="@/assets/saft-typeform.svg"
+          alt="SAFT Logo"
+          class="mb-2"
+        />
+        <button
+          id="hamburger"
+          :class="{ focused: navBarFocused }"
+          @click="navBarFocused = !navBarFocused"
+        >
+          <svg width="30px" height="25px" viewBox="0 0 30 25">
+            <rect
+              id="rect-1"
+              x="0"
+              y="0"
+              width="30"
+              height="4"
+              rx="1.95652174"
+            ></rect>
+            <rect
+              id="rect-2"
+              x="5.2173913"
+              y="10.4347826"
+              width="24.7826087"
+              height="4"
+              rx="1.95652174"
+            ></rect>
+            <rect
+              id="rect-3"
+              x="13.0434783"
+              y="20.8695652"
+              width="16.9565217"
+              height="4"
+              rx="1.95652174"
+            ></rect>
+          </svg>
+        </button>
+      </div>
+      <ul class="links" :class="{ appear: navBarFocused }">
+        <li :class="{ active: this.$store.state.pageNo == 0 }">
           <nuxt-link to="/">Home</nuxt-link>
-        </ul>
-        <ul :class="{ active: this.$store.state.pageNo == 1 }">
+        </li>
+        <li :class="{ active: this.$store.state.pageNo == 1 }">
           <nuxt-link to="/about">About</nuxt-link>
-        </ul>
-        <ul :class="{ active: this.$store.state.pageNo == 2 }">
+        </li>
+        <li :class="{ active: this.$store.state.pageNo == 2 }">
           <nuxt-link to="/podcast">Podcast</nuxt-link>
-        </ul>
-        <ul class="patreon-link">
+        </li>
+        <li class="patreon-link">
           <a href="https://www.patreon.com/saftapologetics" target="_blank">
             Support Us <icon class="ml-1" name="patreon" type="fab" />
           </a>
-        </ul>
-      </li>
+        </li>
+      </ul>
     </nav>
+    <div style="height: 100px"></div>
+
     <Nuxt />
+
     <footer>
       <div id="footer">
         <div id="info">
@@ -69,47 +103,75 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
 export default {
-  methods: {
-    hamburgerClick() {
-      const el = document.querySelector(".links");
-      el.classList.toggle("flex");
-      el.classList.toggle("hidden");
-    },
+  methods: {},
+
+  data() {
+    return {
+      navBarFocused: false,
+    };
   },
+
+  mounted() {},
 };
 </script>
 
 <style lang="scss" scoped>
 #navbar {
-  @apply px-6;
-  @apply py-4;
+  @apply w-screen;
+  height: 100px;
+  @apply fixed;
+  @apply z-50;
   @apply grid;
   @apply items-center;
   @apply shadow-lg;
-  grid-template-columns: auto auto;
 
   background-color: #002586;
 
-  #typeform {
-    width: 237px;
-  }
+  .navbar-inner {
+    background-color: #002586;
+    @apply py-4;
+    @apply w-screen;
+    @apply h-full;
+    @apply flex;
+    @apply relative;
+    @apply z-40;
 
-  #hamburger {
-    @apply ml-auto;
+    #typeform {
+      @apply pl-3;
+      width: 250px;
+    }
   }
 
   .links {
+    @apply col-start-1;
+    @apply col-end-3;
+    @apply row-start-2;
+    @apply flex;
     @apply flex-col;
     @apply text-white;
-    @apply my-3;
+    @apply py-3;
+    @apply pl-3;
+    @apply w-screen;
+    @apply transition-all;
+    @apply ease-in-out;
+    @apply duration-500;
+    transform: translateY(-150%);
 
-    height: max-content;
-    width: max-content;
+    background-color: #002586;
 
-    ul {
+    &.appear {
+      transform: translateY(0%);
+      @apply opacity-100;
+    }
+
+    li {
       @apply mr-5;
       @apply py-2;
+      @apply w-max;
 
       @apply rounded-sm;
       @apply uppercase;
@@ -123,6 +185,84 @@ export default {
         @apply px-6;
       }
     }
+  }
+
+  #hamburger {
+    @apply relative;
+    @apply z-40;
+    @apply ml-auto;
+    @apply pr-3;
+    @apply self-center;
+    @apply text-white;
+    transform: translateZ(0px);
+
+    svg {
+      @apply fill-current;
+    }
+
+    #rect-1 {
+      animation: rect-1-rev 1s cubic-bezier(0.86, 0, 0.07, 1);
+    }
+
+    #rect-2 {
+      transition: all 0.5s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    }
+
+    #rect-3 {
+      animation: rect-3-rev 1s cubic-bezier(0.86, 0, 0.07, 1);
+    }
+
+    &.focused {
+      #rect-1 {
+        animation: rect-1 1s cubic-bezier(0.86, 0, 0.07, 1);
+        transform: translateY(90%) translateX(0%) rotate(-45deg);
+      }
+      #rect-2 {
+        @apply opacity-0;
+        @apply scale-50;
+      }
+      #rect-3 {
+        animation: rect-3 1s cubic-bezier(0.86, 0, 0.07, 1);
+        transform: translateY(-50%) translateX(57%) rotate(45deg);
+        width: 30px;
+        x: 0;
+      }
+    }
+  }
+}
+
+@keyframes rect-1-rev {
+  from {
+    transform: translateY(90%) translateX(0%) rotate(-45deg);
+  }
+}
+
+@keyframes rect-3-rev {
+  from {
+    transform: translateY(-50%) translateX(57%) rotate(45deg);
+    width: 30px;
+    x: 0;
+  }
+}
+
+@keyframes rect-1 {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+}
+@keyframes rect-3 {
+  0% {
+    transform: translateY(0);
+    width: 16.9565217px;
+    x: 13.0434783px;
+  }
+  50% {
+    transform: translateY(-49%);
+    width: 30px;
+    x: 0;
   }
 }
 
@@ -211,10 +351,15 @@ footer {
 @screen xl {
   #navbar {
     @apply flex;
+    @apply px-6;
     @apply flex-wrap;
+    height: 130px;
 
-    #typeform {
-      width: 358px;
+    .navbar-inner {
+      @apply w-auto;
+      #typeform {
+        width: 358px;
+      }
     }
 
     #hamburger {
@@ -222,12 +367,17 @@ footer {
     }
 
     .links {
-      display: flex !important;
+      @apply flex;
+      @apply self-center;
+      @apply w-max;
+      height: max-content;
       @apply my-0;
       @apply flex-row;
       @apply ml-auto;
+      transform: translateY(0%);
+      @apply opacity-100;
 
-      ul {
+      li {
         @apply px-6;
 
         &.active {
