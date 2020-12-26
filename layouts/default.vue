@@ -11,44 +11,32 @@
         <button
           id="hamburger"
           :class="{ focused: navBarFocused }"
-          @click="navBarFocused = !navBarFocused"
+          @click="toggleHamburger()"
         >
           <svg width="30px" height="25px" viewBox="0 0 30 25">
-            <rect
-              id="rect-1"
-              x="0"
-              y="0"
-              width="30"
-              height="4"
-              rx="1.95652174"
-            ></rect>
-            <rect
-              id="rect-2"
-              x="5.2173913"
-              y="10.4347826"
-              width="24.7826087"
-              height="4"
-              rx="1.95652174"
-            ></rect>
-            <rect
-              id="rect-3"
-              x="13.0434783"
-              y="20.8695652"
-              width="16.9565217"
-              height="4"
-              rx="1.95652174"
-            ></rect>
+            <rect id="rect-1" x="0" y="0" width="30" height="4" rx="2"></rect>
+            <rect id="rect-2" x="6" y="10" width="24" height="4" rx="2"></rect>
+            <rect id="rect-3" x="14" y="20" width="16" height="4" rx="2"></rect>
           </svg>
         </button>
       </div>
       <ul class="links" :class="{ appear: navBarFocused }">
-        <li :class="{ active: this.$store.state.pageNo == 0 }">
+        <li
+          :class="{ active: this.$store.state.pageNo == 0 }"
+          @click="toggleHamburger()"
+        >
           <nuxt-link to="/">Home</nuxt-link>
         </li>
-        <li :class="{ active: this.$store.state.pageNo == 1 }">
+        <li
+          :class="{ active: this.$store.state.pageNo == 1 }"
+          @click="toggleHamburger()"
+        >
           <nuxt-link to="/about">About</nuxt-link>
         </li>
-        <li :class="{ active: this.$store.state.pageNo == 2 }">
+        <li
+          :class="{ active: this.$store.state.pageNo == 2 }"
+          @click="toggleHamburger()"
+        >
           <nuxt-link to="/podcast">Podcast</nuxt-link>
         </li>
         <li class="patreon-link">
@@ -59,6 +47,11 @@
       </ul>
     </nav>
     <div style="height: 100px"></div>
+    <div
+      class="fixed inset-0 z-30"
+      :class="{ hidden: !navBarFocused }"
+      @click="toggleHamburger()"
+    ></div>
 
     <Nuxt />
 
@@ -107,7 +100,75 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 export default {
-  methods: {},
+  methods: {
+    toggleHamburger() {
+      this.navBarFocused = !this.navBarFocused;
+      let ease = "expo.inOut";
+
+      if (this.navBarFocused) {
+        gsap.to("#rect-1", {
+          keyframes: [
+            { y: 10, ease: ease },
+            {
+              rotation: -45,
+              y: 20,
+              x: 5,
+              transformOrigin: "50% left",
+              ease: ease,
+              duration: 0.7,
+            },
+          ],
+        });
+
+        gsap.to("#rect-2", {
+          opacity: 0,
+        });
+
+        gsap.to("#rect-3", {
+          keyframes: [
+            { y: -10, scaleX: 1.875, x: -10, ease: ease },
+            {
+              rotation: 45,
+              y: 0,
+              x: -17,
+              transformOrigin: "50% right",
+              ease: ease,
+              duration: 0.7,
+            },
+          ],
+        });
+      } else {
+        let duration = 0.8;
+        gsap.to("#rect-1", {
+          keyframes: [
+            {
+              y: 0,
+              rotation: 0,
+              x: 0,
+              ease: ease,
+              duration: duration,
+            },
+          ],
+        });
+        gsap.to("#rect-2", {
+          opacity: 1,
+          duration: duration,
+        });
+        gsap.to("#rect-3", {
+          keyframes: [
+            {
+              y: 0,
+              rotation: 0,
+              x: -14,
+              scaleX: 1,
+              ease: ease,
+              duration: duration,
+            },
+          ],
+        });
+      }
+    },
+  },
 
   data() {
     return {
@@ -194,75 +255,11 @@ export default {
     @apply pr-3;
     @apply self-center;
     @apply text-white;
-    transform: translateZ(0px);
+    @apply outline-none;
 
     svg {
       @apply fill-current;
     }
-
-    #rect-1 {
-      animation: rect-1-rev 1s cubic-bezier(0.86, 0, 0.07, 1);
-    }
-
-    #rect-2 {
-      transition: all 0.5s cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    }
-
-    #rect-3 {
-      animation: rect-3-rev 1s cubic-bezier(0.86, 0, 0.07, 1);
-    }
-
-    &.focused {
-      #rect-1 {
-        animation: rect-1 1s cubic-bezier(0.86, 0, 0.07, 1);
-        transform: translateY(90%) translateX(0%) rotate(-45deg);
-      }
-      #rect-2 {
-        @apply opacity-0;
-        @apply scale-50;
-      }
-      #rect-3 {
-        animation: rect-3 1s cubic-bezier(0.86, 0, 0.07, 1);
-        transform: translateY(-50%) translateX(57%) rotate(45deg);
-        width: 30px;
-        x: 0;
-      }
-    }
-  }
-}
-
-@keyframes rect-1-rev {
-  from {
-    transform: translateY(90%) translateX(0%) rotate(-45deg);
-  }
-}
-
-@keyframes rect-3-rev {
-  from {
-    transform: translateY(-50%) translateX(57%) rotate(45deg);
-    width: 30px;
-    x: 0;
-  }
-}
-
-@keyframes rect-1 {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(50%);
-  }
-}
-@keyframes rect-3 {
-  0% {
-    transform: translateY(0);
-    width: 16.9565217px;
-    x: 13.0434783px;
-  }
-  50% {
-    transform: translateY(-49%);
-    width: 30px;
-    x: 0;
   }
 }
 

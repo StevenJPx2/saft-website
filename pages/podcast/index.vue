@@ -111,6 +111,10 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
+function easeOutSine(x) {
+  return Math.sin((x * Math.PI) / 2);
+}
+
 export default {
   head() {
     return {
@@ -122,14 +126,15 @@ export default {
           src:
             "https://www.buzzsprout.com/1034671.js?container_id=buzzsprout-small-player-1034671&player=small&limit=1",
           body: true,
+          defer: true,
         },
       ],
       meta: [
         {
           hid: "description",
           name: "description",
-          content: `SAFT Podcast brings to you the coherent, cohesive, 
-          logical, and relevant defense of the Christian worldview. 
+          content: `SAFT Podcast brings to you the coherent, cohesive,
+          logical, and relevant defense of the Christian worldview.
           From layman to experts in the field, everyone can tune in and be equipped.`,
         },
       ],
@@ -141,6 +146,7 @@ export default {
 
     gsap.registerPlugin(ScrollTrigger);
 
+    let [countryNo, continentNo] = [35, 6];
     let val = { country: 0, continent: 0 };
 
     document.querySelectorAll("[aos]").forEach((el) => {
@@ -199,34 +205,42 @@ export default {
       );
     });
 
-    gsap.from("#country-no", {
-      ease: "power.in",
-      duration: 0.7,
-      onUpdate: () => {
-        document.querySelector("#country-no").innerHTML =
-          val.country >= 33 ? 33 : ++val.country;
+    gsap.to("#country-no", {
+      duration: 2.5,
+      onUpdate() {
+        val.country += 1 / 120;
+        document.querySelector("#country-no").innerHTML = Math.round(
+          countryNo * easeOutSine(val.country)
+        );
+      },
+      onComplete() {
+        val.country = 0;
       },
       scrollTrigger: {
         trigger: "#country-no",
         start: "top center",
-        end: "bottom center",
       },
     });
 
-    gsap.from("#continent-no", {
-      ease: "power.in",
-      duration: 0.7,
-      onUpdate: () => {
-        document.querySelector("#continent-no").innerHTML =
-          val.country >= 6 ? 6 : ++val.country;
-      },
+    gsap.to("#continent-no", {
+      duration: 2.5,
       scrollTrigger: {
         trigger: "#continent-no",
         start: "top center",
-        end: "bottom center",
+        onUpdate() {
+          val.continent += 1 / 120;
+          document.querySelector("#continent-no").innerHTML = Math.round(
+            continentNo * easeOutSine(val.continent)
+          );
+        },
+        onComplete() {
+          val.continent = 0;
+        },
       },
     });
   },
+
+  methods: {},
 
   data() {
     return {

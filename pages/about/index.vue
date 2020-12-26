@@ -168,16 +168,11 @@
         <h3 aos>Jacob Varghese</h3>
         <h4 aos>Founder - Director</h4>
         <p aos>
-          Born to parents hailing from Kerala, who to the dismay and resistance
-          of his grandparents decided to follow God and know Him through
-          scripture alone, instead of traditions, Jacob understood the necessity
-          of placing God’s sovereign will above all. He completed his undergrad
-          in economics in Kolkata and has been involved with church ministry,
-          youth ministry (ICPF UAE) and campus ministry (India Campus Crusade
-          for Christ). He is currently serving as Reasonable Faith Chapter
-          Director, Ajman, UAE. He loves music, cricket and is a fan of coffee-
-          black or cream! He also has an amazing younger sister who often makes
-          him feel that he is the younger sibling. 😉
+          Jacob completed his undergrad in economics in Kolkata and has been
+          involved with church ministry, youth ministry (ICPF UAE) and campus
+          ministry (India Campus Crusade for Christ). He is currently serving as
+          Reasonable Faith Chapter Director, Ajman, UAE. He loves music, cricket
+          and is a fan of coffee- black or cream!
         </p>
       </article>
 
@@ -235,6 +230,7 @@
           Member and SAFT Apologetics. <br />
           (The following list of Advisory Board Members is not exhaustive)
         </p>
+
         <article class="advisory-board">
           <section class="advisory-board--card" aos>
             <img src="@/assets/binu-thampy.jpg" alt="Binu Thampy" />
@@ -278,6 +274,7 @@
         </p>
         <h5>Brian Auten (Founder-Emeritus, Apologetics315)</h5>
       </article>
+
       <article class="endorsements--card">
         <p>
           I love SAFT Apologetics! I had the privilege to closely connect with
@@ -292,10 +289,11 @@
           them to you.
         </p>
         <h5>
-          Jerin Thomas, Global Mission Catalyst, WCD of the Christian and
-          Missionary Alliance, Canada
+          Jerin Thomas (Global Mission Catalyst, WCD of the Christian and
+          Missionary Alliance, Canada)
         </h5>
       </article>
+
       <article class="endorsements--card">
         <p>
           “And you will know the TRUTH and the TRUTH will make you free” John
@@ -318,6 +316,7 @@
           Christ, East India)
         </h5>
       </article>
+
       <article class="endorsements--card">
         <p>
           We are living in a time when the defense of the Gospel is most needed.
@@ -331,8 +330,9 @@
           future and may God use them mightily to lead many to the truth and to
           enrich the spiritual lives of many.
         </p>
-        <h5>Denish Sebastian, Pneuma Hermeneutics Group</h5>
+        <h5>Denish Sebastian (Pneuma Hermeneutics Group)</h5>
       </article>
+
       <article class="endorsements--card">
         <p>
           We are living at a time where people would just do based on what they
@@ -347,6 +347,7 @@
         </p>
         <h5>Pr Jacob Mathew (Associate Pastor, AG Kolkata)</h5>
       </article>
+
       <article class="endorsements--card">
         <p>
           SAFT Apologetics has interviewed and interacted with some of the best
@@ -359,6 +360,7 @@
         </p>
         <h5>Joel Ivy (Whowasmuhammad.org)</h5>
       </article>
+
       <article class="endorsements--card">
         <p>
           Apologetics training is critical and greatly needed for the Church in
@@ -372,6 +374,7 @@
         </p>
         <h5>Alan John (Reasonable Faith Chapter Director, Salem, India)</h5>
       </article>
+
       <article class="endorsements--card">
         <p>
           Having closely worked with Jacob Varghese through ICPF, I am glad that
@@ -383,10 +386,11 @@
           for those interested in apologetics but for Christians interested in
           learning how to creatively bring the Christian voice into cultural
           conversations today. This is the forum on apologetics that the world
-          has been waiting for
+          has been waiting for.
         </p>
         <h5>Elvin Gerzim (Associate Staff Worker, ICPF UAE)</h5>
       </article>
+
       <article class="endorsements--card">
         <p>
           SAFT Apologetics is a fantastic platform connecting Christian scholars
@@ -398,6 +402,7 @@
         </p>
         <h5>Chris BZ (1c15.co.uk)</h5>
       </article>
+
       <article class="endorsements--card">
         <p>
           If you are looking for a young, fresh and authentic apologetics
@@ -405,7 +410,7 @@
           questions skeptics ask with great clarity and an honest desire to see
           Christ glorified!
         </p>
-        <h5>Lukas Rueegger, Deflate</h5>
+        <h5>Lukas Rueegger (Deflate)</h5>
       </article>
     </section>
 
@@ -473,7 +478,7 @@
           Christ our Lord.</small
         >
         <small class="pb-16"
-          ><sup>2</sup>This excerpt (until ‘life everlasting’) is based on the
+          ><sup>2</sup> This excerpt (until ‘life everlasting’) is based on the
           Apostle’s Creed, a statement of orthodox Christian faith, traceable to
           140 AD.</small
         >
@@ -509,7 +514,7 @@ export default {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    document.querySelectorAll("[aos]").forEach((el) => {
+    document.querySelectorAll("[aos], .endorsements--card").forEach((el) => {
       gsap.fromTo(
         el,
         {
@@ -560,26 +565,6 @@ export default {
             scrub: true,
             start: "top center",
             end: "bottom center",
-          },
-        }
-      );
-    });
-
-    document.querySelectorAll(".endorsements--card").forEach((el) => {
-      gsap.fromTo(
-        el,
-        {
-          opacity: 0,
-          y: 50,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.3,
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: el,
-            toggleActions: "restart continue play reverse",
           },
         }
       );

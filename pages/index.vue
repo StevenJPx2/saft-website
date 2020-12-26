@@ -201,6 +201,7 @@ export default {
           src:
             "https://www.buzzsprout.com/1034671.js?container_id=buzzsprout-small-player-1034671&player=small&limit=1",
           body: true,
+          defer: true,
         },
       ],
       meta: [
