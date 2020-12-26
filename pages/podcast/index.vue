@@ -206,7 +206,6 @@ export default {
         trigger: item.name,
         start: "top center",
         end: "top top",
-        markers: true,
         onEnter() {
           animation.restart();
         },
