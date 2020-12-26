@@ -193,10 +193,10 @@ export default {
         ease: "power2.out",
       });
 
+      const el = document.querySelector(item.name);
+
       animation.eventCallback("onUpdate", () => {
-        document.querySelector(item.name).innerHTML = Math.round(
-          item.num * animation.ratio
-        );
+        el.innerHTML = Math.round(item.num * animation.ratio);
       });
 
       animation.seek(0);
@@ -206,19 +206,30 @@ export default {
         trigger: item.name,
         start: "top center",
         end: "top top",
+        markers: true,
         onEnter() {
-          animation.restart();
+          if (el.innerHTML == 0) {
+            animation.restart();
+          }
+        },
+        onEnterBack() {
+          if (!animation.isActive()) {
+            el.innerHTML = 0;
+            animation.seek(0);
+            animation.pause(0);
+          }
         },
         onLeaveBack() {
-          document.querySelector(item.name).innerHTML = 0;
-          animation.seek(0);
-          animation.pause(0);
-          animation.restart();
+          if (el.innerHTML == 0) {
+            animation.restart();
+          }
         },
         onLeave() {
-          document.querySelector(item.name).innerHTML = 0;
-          animation.seek(0);
-          animation.pause(0);
+          if (!animation.isActive()) {
+            el.innerHTML = 0;
+            animation.seek(0);
+            animation.pause(0);
+          }
         },
       });
     });
