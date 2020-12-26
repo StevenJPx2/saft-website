@@ -304,13 +304,30 @@ export default {
     });
 
     gsap.fromTo(
-      "#founder-images .card, .main-line",
+      ".main-line",
       { opacity: 0, y: 50 },
       {
         opacity: 1,
         y: 0,
         stagger: 0.1,
         duration: 1.5,
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: ".main-line",
+          toggleActions: "restart continue play reverse",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      "#founder-images .card",
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 1.5,
+
         ease: "power2.inOut",
         scrollTrigger: {
           trigger: "#founder-images",

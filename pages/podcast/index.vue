@@ -111,10 +111,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-function easeOutSine(x) {
-  return Math.sin((x * Math.PI) / 2);
-}
-
 export default {
   head() {
     return {
@@ -188,42 +184,44 @@ export default {
       );
     });
 
-    let countryNoAnimation = gsap.to("#country-no", {
-      duration: 2.5,
-      ease: "power2.out",
-    });
+    [
+      { name: "#country-no", num: 35 },
+      { name: "#continent-no", num: 6 },
+    ].forEach((item) => {
+      const animation = gsap.to(item.name, {
+        duration: 2.5,
+        ease: "power2.out",
+      });
 
-    countryNoAnimation.eventCallback("onUpdate", () => {
-      document.querySelector("#country-no").innerHTML = Math.round(
-        countryNo * countryNoAnimation.ratio
-      );
-    });
+      animation.eventCallback("onUpdate", () => {
+        document.querySelector(item.name).innerHTML = Math.round(
+          item.num * animation.ratio
+        );
+      });
 
-    ScrollTrigger.create({
-      trigger: "#country-no",
-      start: "top center",
-      onEnter() {
-        countryNoAnimation.restart();
-      },
-    });
+      animation.seek(0);
+      animation.pause(0);
 
-    let continentNoAnimation = gsap.to("#continent-no", {
-      duration: 1,
-      ease: "power2.out",
-    });
-
-    continentNoAnimation.eventCallback("onUpdate", () => {
-      document.querySelector("#continent-no").innerHTML = Math.round(
-        continentNo * continentNoAnimation.ratio
-      );
-    });
-
-    ScrollTrigger.create({
-      trigger: "#continent-no",
-      start: "top center",
-      onEnter() {
-        continentNoAnimation.restart();
-      },
+      ScrollTrigger.create({
+        trigger: item.name,
+        start: "top center",
+        end: "top top",
+        markers: true,
+        onEnter() {
+          animation.restart();
+        },
+        onLeaveBack() {
+          document.querySelector(item.name).innerHTML = 0;
+          animation.seek(0);
+          animation.pause(0);
+          animation.restart();
+        },
+        onLeave() {
+          document.querySelector(item.name).innerHTML = 0;
+          animation.seek(0);
+          animation.pause(0);
+        },
+      });
     });
   },
 
