@@ -3,13 +3,11 @@
     <section class="container">
       <h1 class="mb-8" aos>SAFT Podcast</h1>
       <p aos>
-        SAFT Podcast brings to you the coherent, cohesive, logical, and relevant
-        defense of the Christian worldview. From layman to experts in the field,
-        everyone can tune in and be equipped. We also aim to introduce to the
-        audience the plethora of work and research done in the field of
-        Christian Apologetics in defending the faith and the individuals who
-        further the intellectual cause of Christianity by featuring the greatest
-        minds of the Christian Apologetics arena.
+        SAFT Podcast brings to you the rational and relevant defense of the
+        Christian worldview. We also introduce to the audience the research done
+        in the field of Christian Apologetics and the individuals who defend the
+        Christian faith by featuring the greatest minds of the Christian
+        Apologetics arena. This is a podcast for both the expert and the layman.
       </p>
       <br />
       <p aos>Listen to our latest episode here.</p>
@@ -129,9 +127,8 @@ export default {
         {
           hid: "description",
           name: "description",
-          content: `SAFT Podcast brings to you the coherent, cohesive,
-          logical, and relevant defense of the Christian worldview.
-          From layman to experts in the field, everyone can tune in and be equipped.`,
+          content: `This is a podcast for the expert and the layman. 
+          Join us in exploring the rational defense of Christianity.`,
         },
       ],
     };

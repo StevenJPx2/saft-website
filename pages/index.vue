@@ -210,8 +210,7 @@ export default {
         {
           hid: "description",
           name: "description",
-          content: `SAFT is a web-based ministry that aims to equip the believer defend
-              their faith so that they may effectively evangelise.`,
+          content: `Equipping the believer defend their faith anytime, anywhere.`,
         },
       ],
     };

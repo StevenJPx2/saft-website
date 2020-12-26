@@ -28,7 +28,7 @@
     </section>
 
     <section class="overflow-hidden">
-      <div class="relative w-max left-3/4 scroll-circle">
+      <div class="absolute w-max left-3/4 scroll-circle">
         <div
           class="relative w-48 h-48 rounded-full shadow-2xl md:h-72 md:w-72 light-gradient"
         ></div>
@@ -38,7 +38,9 @@
       </div>
     </section>
 
-    <section class="mt-0 from-founder container-light" aos>
+    <section class="h-64 md:h-96"></section>
+
+    <section class="mt-0 from-founder container-light">
       <article class="text-article">
         <h1 class="mb-8" aos>From Founder's Desk</h1>
         <div class="from-founder--text" aos>
@@ -156,10 +158,14 @@
     </section>
 
     <section class="pt-10 overflow-hidden pb-14">
-      <div
-        class="relative w-48 h-48 rounded-full shadow-2xl -left-20 md:h-72 md:w-72 dark-gradient scroll-circle"
-      ></div>
+      <div class="absolute w-full">
+        <div
+          class="relative w-48 h-48 rounded-full shadow-2xl -left-20 md:h-72 md:w-72 dark-gradient scroll-circle"
+        ></div>
+      </div>
     </section>
+
+    <section class="h-48 md:h-80"></section>
 
     <section id="core-team" class="container pt-6 md:pt-0 core-team">
       <h1 class="mb-24 md:mb-32" aos>Our Core Team</h1>
@@ -181,22 +187,16 @@
         <h3 aos>Ankit Nayak</h3>
         <h4 aos>Executive Director</h4>
         <p aos>
-          Ankit has been an active part of Assembly of God Church ministries in
-          Kolkata and India Campus Crusade for Christ. Passionate about
-          learning, he completed multiple courses ranging from Rave Lifestyle
-          Journey, Graduate Evangelism Training Programme from India Campus
-          Crusade for Christ and a diploma in theology (about discipleship and
-          the book of Galatians) from Bible Education by Extension International
-          (BEE International). At present, he is ministering in his university
-          shouldering the leadership role of the ICCC fellowship. He was born
-          and brought up in a missionary family currently spearheading India
-          Campus Crusade for Christ in their respective designations and area in
-          India. He has a keen interest in music and technology. Right now he is
-          pursuing Engineering with Artificial Intelligence. Working alongside
-          Jacob in SAFT, he is able to identify the need for educating people
-          with the evidence of faith and considers it a privilege to use his
-          expertise and interest in apologetics for God's glory. He loves
-          singing and playing guitar for God's glory.
+          Ankit is an active part of Assembly of God Church in Kolkata and India
+          Campus Crusade for Christ. He completed Rave Lifestyle Journey,
+          Graduate Evangelism Training Programme from India Campus Crusade for
+          Christ and a diploma in theology (about discipleship and the book of
+          Galatians) from Bible Education by Extension International (BEE
+          International). He was born and brought up in a missionary family
+          currently spearheading India Campus Crusade for Christ in their
+          respective designations and area in India. Right now he is pursuing
+          Engineering with Artificial Intelligence. He loves singing and playing
+          guitar for God's glory.
         </p>
       </article>
 
@@ -255,11 +255,15 @@
     </section>
 
     <section class="pt-10 overflow-hidden pb-14">
-      <div
-        class="relative w-48 h-48 rounded-full shadow-2xl lg:absolute md:h-72 md:w-72 darker-gradient scroll-circle"
-        style="left: 75%"
-      ></div>
+      <div class="absolute w-full">
+        <div
+          class="relative w-48 h-48 rounded-full shadow-2xl lg:absolute md:h-72 md:w-72 darker-gradient scroll-circle"
+          style="left: 75%"
+        ></div>
+      </div>
     </section>
+
+    <section class="h-48 md:h-72"></section>
 
     <section id="endorsements" class="container endorsements">
       <h1 class="mb-12 md:mb-24" aos>Endorsements</h1>
@@ -499,10 +503,7 @@ export default {
         {
           hid: "description",
           name: "description",
-          content: `SAFT Apologetics made public appearance on June 1, 2019. The goal of
-          SAFT Apologetics is captured in our title - 'Seeking Answers Finding
-          Truth' and is derived off inspiration from late Nabeel Qureshi's
-          autobiography. We seek to stir conversations about the most important
+          content: `We seek to stir conversations about the most important
           questions of mankind.`,
         },
       ],
@@ -557,9 +558,10 @@ export default {
     document.querySelectorAll(".scroll-circle").forEach((el) => {
       gsap.fromTo(
         el,
-        { y: 0 },
+        { y: -10 },
         {
-          y: 30,
+          y: 60,
+          ease: "sine.out",
           scrollTrigger: {
             trigger: el,
             scrub: true,
