@@ -147,7 +147,6 @@ export default {
     gsap.registerPlugin(ScrollTrigger);
 
     let [countryNo, continentNo] = [35, 6];
-    let val = { country: 0, continent: 0 };
 
     document.querySelectorAll("[aos]").forEach((el) => {
       gsap.fromTo(
@@ -159,7 +158,7 @@ export default {
         {
           opacity: 1,
           y: 0,
-          duration: 1.3,
+          duration: 1,
           ease: "power2.inOut",
           scrollTrigger: {
             trigger: el,
@@ -189,53 +188,41 @@ export default {
       );
     });
 
-    document.querySelectorAll(".scroll-circle").forEach((el) => {
-      gsap.fromTo(
-        el,
-        { y: 0 },
-        {
-          y: 30,
-          scrollTrigger: {
-            trigger: el,
-            scrub: true,
-            start: "top center",
-            end: "bottom center",
-          },
-        }
+    let countryNoAnimation = gsap.to("#country-no", {
+      duration: 2.5,
+      ease: "power2.out",
+    });
+
+    countryNoAnimation.eventCallback("onUpdate", () => {
+      document.querySelector("#country-no").innerHTML = Math.round(
+        countryNo * countryNoAnimation.ratio
       );
     });
 
-    gsap.to("#country-no", {
-      duration: 2.5,
-      onUpdate() {
-        val.country += 1 / 120;
-        document.querySelector("#country-no").innerHTML = Math.round(
-          countryNo * easeOutSine(val.country)
-        );
-      },
-      onComplete() {
-        val.country = 0;
-      },
-      scrollTrigger: {
-        trigger: "#country-no",
-        start: "top center",
+    ScrollTrigger.create({
+      trigger: "#country-no",
+      start: "top center",
+      onEnter() {
+        countryNoAnimation.restart();
       },
     });
 
-    gsap.to("#continent-no", {
-      duration: 2.5,
-      scrollTrigger: {
-        trigger: "#continent-no",
-        start: "top center",
-        onUpdate() {
-          val.continent += 1 / 120;
-          document.querySelector("#continent-no").innerHTML = Math.round(
-            continentNo * easeOutSine(val.continent)
-          );
-        },
-        onComplete() {
-          val.continent = 0;
-        },
+    let continentNoAnimation = gsap.to("#continent-no", {
+      duration: 1,
+      ease: "power2.out",
+    });
+
+    continentNoAnimation.eventCallback("onUpdate", () => {
+      document.querySelector("#continent-no").innerHTML = Math.round(
+        continentNo * continentNoAnimation.ratio
+      );
+    });
+
+    ScrollTrigger.create({
+      trigger: "#continent-no",
+      start: "top center",
+      onEnter() {
+        continentNoAnimation.restart();
       },
     });
   },

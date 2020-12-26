@@ -524,7 +524,7 @@ export default {
         {
           opacity: 1,
           y: 0,
-          duration: 1.3,
+          duration: 1,
           ease: "power2.inOut",
           scrollTrigger: {
             trigger: el,

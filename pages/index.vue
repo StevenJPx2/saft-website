@@ -15,9 +15,11 @@
         <h1
           class="absolute z-10 w-4/6 font-extrabold top-1/3 md:w-1/4"
           style="line-height: 3.15rem"
-          aos
         >
-          SEEKING ANSWERS, FINDING TRUTH.
+          <div class="inline-block main-line">SEEKING</div>
+          <div class="inline-block main-line">ANSWERS,</div>
+          <div class="inline-block main-line">FINDING</div>
+          <div class="inline-block main-line">TRUTH.</div>
         </h1>
       </div>
     </header>
@@ -230,7 +232,7 @@ export default {
         {
           opacity: 1,
           y: 0,
-          duration: 1.3,
+          duration: 1,
           ease: "power2.inOut",
           scrollTrigger: {
             trigger: el,
@@ -302,7 +304,7 @@ export default {
     });
 
     gsap.fromTo(
-      "#founder-images .card",
+      "#founder-images .card, .main-line",
       { opacity: 0, y: 50 },
       {
         opacity: 1,

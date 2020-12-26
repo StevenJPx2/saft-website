@@ -126,7 +126,7 @@ export default {
 
         gsap.to("#rect-3", {
           keyframes: [
-            { y: -10, scaleX: 1.875, x: -10, ease: ease },
+            { y: -10, scaleX: 1.875, x: -14, ease: ease },
             {
               rotation: 45,
               y: 0,
@@ -199,10 +199,12 @@ export default {
     @apply h-full;
     @apply flex;
     @apply relative;
+    @apply items-center;
     @apply z-40;
 
     #typeform {
       @apply pl-3;
+      @apply h-full;
       width: 250px;
     }
   }
