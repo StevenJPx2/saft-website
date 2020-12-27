@@ -421,6 +421,7 @@ p {
 
   .guest {
     @apply mr-10;
+    @apply ml-0;
   }
 }
 </style>
