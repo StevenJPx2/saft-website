@@ -27,10 +27,10 @@
       </article>
     </section>
 
-    <section class="overflow-hidden">
-      <div class="absolute w-max left-3/4 scroll-circle">
+    <section class="absolute md:relative">
+      <div class="relative md:absolute scroll-circle left-2/3">
         <div
-          class="relative w-48 h-48 rounded-full shadow-2xl md:h-72 md:w-72 light-gradient"
+          class="relative w-48 h-48 overflow-x-hidden rounded-full shadow-2xl md:h-72 md:w-72 light-gradient"
         ></div>
         <div
           class="relative w-16 h-16 rounded-full shadow-2xl -top-10 -left-1/4 md:h-28 md:w-28 middle-gradient"
@@ -254,11 +254,10 @@
       </div>
     </section>
 
-    <section class="pt-10 overflow-hidden pb-14">
-      <div class="absolute w-full">
+    <section class="absolute w-full pt-10 lg:absolute pb-14">
+      <div class="relative lg:absolute left-2/3 w-max">
         <div
           class="relative w-48 h-48 rounded-full shadow-2xl lg:absolute md:h-72 md:w-72 darker-gradient scroll-circle"
-          style="left: 75%"
         ></div>
       </div>
     </section>
@@ -561,7 +560,7 @@ export default {
         { y: -10 },
         {
           y: 60,
-          ease: "sine.out",
+          ease: "back.out(1.7)",
           scrollTrigger: {
             trigger: el,
             scrub: true,

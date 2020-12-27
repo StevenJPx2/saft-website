@@ -202,7 +202,7 @@ export default {
       ScrollTrigger.create({
         trigger: item.name,
         start: "top center",
-        end: "top top",
+        end: "bottom top",
         onEnter() {
           if (el.innerHTML == 0) {
             animation.restart();
@@ -256,6 +256,7 @@ export default {
         "Lukas Rueegger",
         "Tom Gilson",
         "Alisa Childers",
+        "Xandra Caroll",
       ],
     };
   },
