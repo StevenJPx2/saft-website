@@ -560,7 +560,7 @@ export default {
         { y: -10 },
         {
           y: 60,
-          ease: "back.out(1.7)",
+          ease: "sine.out",
           scrollTrigger: {
             trigger: el,
             scrub: true,
