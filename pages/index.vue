@@ -33,9 +33,9 @@
               <h2 class="card--details--title">Jacob Varghese</h2>
               <h3 class="card--details--subtitle">Founder - Director</h3>
               <p class="card--details--desc">
-                Born to parents hailing from Kerala, who to the dismay and
-                resistance of his grandparents decided to follow God and know
-                Him...
+                Jacob completed his undergrad in economics in Kolkata and has
+                been involved with church ministry, youth ministry (ICPF UAE)
+                and campus ministry (India Campus Crusade for Christ)...
               </p>
             </div>
           </div>
@@ -46,9 +46,9 @@
               <h2 class="card--details--title">Ankit Nayak</h2>
               <h3 class="card--details--subtitle">Executive Director</h3>
               <p class="card--details--desc">
-                Ankit has been an active part of Assembly of God Church
-                ministries in Kolkata and India Campus Crusade for Christ.
-                Passionate about...
+                Ankit is an active part of Assembly of God Church in Kolkata and
+                India Campus Crusade for Christ. He completed Rave Lifestyle
+                Journey, Graduate Evangelism...
               </p>
             </div>
           </div>
