@@ -139,7 +139,7 @@ export default {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    let [countryNo, continentNo] = [35, 6];
+    let [countryNo, continentNo] = [37, 6];
 
     document.querySelectorAll("[aos]").forEach((el) => {
       gsap.fromTo(
@@ -182,8 +182,8 @@ export default {
     });
 
     [
-      { name: "#country-no", num: 35 },
-      { name: "#continent-no", num: 6 },
+      { name: "#country-no", num: countryNo },
+      { name: "#continent-no", num: continentNo },
     ].forEach((item) => {
       const animation = gsap.to(item.name, {
         duration: 2.5,
@@ -257,6 +257,8 @@ export default {
         "Tom Gilson",
         "Alisa Childers",
         "Xandra Caroll",
+        "Hillary Morgan Ferrer",
+        "Lydia McGrew",
       ],
     };
   },

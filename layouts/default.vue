@@ -216,7 +216,8 @@ export default {
     @apply flex;
     @apply flex-col;
     @apply text-white;
-    @apply py-3;
+    @apply -mt-2;
+    @apply pb-3;
     @apply pl-3;
     @apply w-screen;
     @apply transition-all;
