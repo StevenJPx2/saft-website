@@ -372,6 +372,7 @@ footer {
       @apply w-max;
       height: max-content;
       @apply my-0;
+      @apply mt-0;
       @apply flex-row;
       @apply ml-auto;
       transform: translateY(0%);
