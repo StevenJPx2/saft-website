@@ -39,6 +39,11 @@
         >
           <nuxt-link to="/podcast">Podcast</nuxt-link>
         </li>
+        <li>
+          <a href="https://areopagus.saftapologetics.com" target="_blank"
+            >Areopagus</a
+          >
+        </li>
         <li class="patreon-link">
           <a href="https://www.patreon.com/saftapologetics" target="_blank">
             Support Us <icon class="ml-1" name="patreon" type="fab" />
@@ -83,6 +88,11 @@
           </ul>
           <ul>
             <nuxt-link to="/podcast">Podcast</nuxt-link>
+          </ul>
+          <ul>
+            <a href="https://areopagus.saftapologetics.com" target="_blank"
+              >Areopagus</a
+            >
           </ul>
           <ul class="patreon-link">
             <a href="https://www.patreon.com/saftapologetics" target="_blank">
@@ -372,7 +382,7 @@ footer {
       @apply w-max;
       height: max-content;
       @apply my-0;
-      @apply mt-0;
+      @apply pb-0;
       @apply flex-row;
       @apply ml-auto;
       transform: translateY(0%);
