@@ -139,7 +139,7 @@ export default {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    let [countryNo, continentNo] = [37, 6];
+    let [countryNo, continentNo] = [43, 6];
 
     document.querySelectorAll("[aos]").forEach((el) => {
       gsap.fromTo(
