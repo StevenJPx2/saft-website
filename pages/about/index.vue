@@ -2,8 +2,8 @@
   <div>
     <section class="container pt-12 about-us">
       <h1 class="mb-8" aos>About Us</h1>
-      <article class="about-us--desc">
-        <p class="mb-3" aos>
+      <article class="about-us--desc" aos>
+        <p class="mb-3">
           SAFT Apologetics made public appearance on June 1, 2019. The goal of
           SAFT Apologetics is captured in our title - 'Seeking Answers Finding
           Truth' and is derived off inspiration from late Nabeel Qureshi's
@@ -15,7 +15,7 @@
           and we believe that the honest seeker will encounter Truth- Christ
           Jesus.
         </p>
-        <p aos>
+        <p>
           The initial area of ministry of SAFT was SAFT Podcast. Through SAFT
           Podcast we bring sound and relevant discussions about God and the case
           for belief in Him. We've featured some of the greatest defenders of
@@ -683,9 +683,12 @@ export default {
 @screen md {
   .about-us {
     &--desc {
-      @apply grid;
-      @apply gap-x-4;
-      grid-template-columns: repeat(2, 1fr);
+      columns: 500px;
+      p {
+        -webkit-column-break-inside: avoid;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
     }
   }
 
