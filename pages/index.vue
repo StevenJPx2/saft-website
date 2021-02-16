@@ -27,41 +27,26 @@
     <section class="container-light">
       <div id="about-us" class="container relative">
         <div id="founder-images">
-          <div class="card">
-            <img src="@/assets/jacob-varghese.jpg" alt="Jacob Varghese" />
+          <div
+            class="card"
+            v-for="{
+              id,
+              fullName,
+              title,
+              description,
+              profilePicture,
+            } in coreTeamMembers"
+            :key="id"
+          >
+            <img
+              :src="profilePicture.url"
+              alt="profilePicture.alternativeText"
+            />
             <div class="card--details">
-              <h2 class="card--details--title">Jacob Varghese</h2>
-              <h3 class="card--details--subtitle">Founder - Director</h3>
+              <h2 class="card--details--title">{{ fullName }}</h2>
+              <h3 class="card--details--subtitle">{{ title }}</h3>
               <p class="card--details--desc">
-                Jacob completed his undergrad in economics in Kolkata and has
-                been involved with church ministry, youth ministry (ICPF UAE)
-                and campus ministry (India Campus Crusade for Christ)...
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <img src="@/assets/ankit-nayak.jpg" alt="Ankit Nayak" />
-            <div class="card--details">
-              <h2 class="card--details--title">Ankit Nayak</h2>
-              <h3 class="card--details--subtitle">Executive Director</h3>
-              <p class="card--details--desc">
-                Ankit is an active part of Assembly of God Church in Kolkata and
-                India Campus Crusade for Christ. He completed Rave Lifestyle
-                Journey, Graduate Evangelism...
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <img src="@/assets/steven-john.jpg" alt="Steven John" />
-            <div class="card--details">
-              <h2 class="card--details--title">Steven John</h2>
-              <h3 class="card--details--subtitle">Chief Editor</h3>
-              <p class="card--details--desc">
-                Steven John has always been an active and passionate evangelism
-                oriented student with a deep seated desire to further his innate
-                talent in design and...
+                {{ description.substr(0, 160) + "..." }}
               </p>
             </div>
           </div>
@@ -71,18 +56,13 @@
           <div aos>
             <h2 class="uppercase">Who are we?</h2>
             <p>
-              We are a web-based ministry that aims to equip the believer defend
-              their faith so that they may effectively evangelise.
+              {{ homePageData.whoWeAre }}
             </p>
           </div>
           <br />
           <div aos>
             <h2 class="uppercase">What do we do?</h2>
-            <p>
-              We live out our Mission and Vision by airing our bi-weekly SAFT
-              Podcast and engaging with live audience across languages via open
-              forums.
-            </p>
+            <p>{{ homePageData.whatWeDo }}</p>
           </div>
           <div class="flex w-full mt-4">
             <div class="w-full"></div>
@@ -97,7 +77,7 @@
     <section class="container relative py-24">
       <div id="tagline" class="flex items-center">
         <blockquote class="z-10 my-auto" aos>
-          Equipping the believer defend their faith anytime, anywhere.
+          {{ homePageData.tagline }}
         </blockquote>
       </div>
     </section>
@@ -338,6 +318,15 @@ export default {
 
   created() {
     this.$store.commit("page", 0);
+  },
+
+  async asyncData({ $axios }) {
+    const baseUrl = "https://saft-strapi-backend.herokuapp.com";
+    const get = async (endpoint) => await $axios.$get(baseUrl + endpoint);
+    const homePageData = await get("/home-page");
+    const coreTeamMembers = await get("/core-teams");
+
+    return { homePageData, coreTeamMembers };
   },
 };
 </script>

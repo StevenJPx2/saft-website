@@ -91,12 +91,15 @@
     <section class="container">
       <h1 class="mt-16 mb-24" aos>Guests</h1>
       <div class="flex flex-wrap">
-        <article v-for="(name, index) in guests" :key="index" class="guest" aos>
+        <article
+          v-for="{ id, name, profilePicture } in podcastGuests"
+          :key="id"
+          class="guest"
+          aos
+        >
           <img
-            :src="
-              require(`@/assets/${name.toLowerCase().replace(/\s/g, '-')}.jpg`)
-            "
-            :alt="name"
+            :src="profilePicture.url"
+            :alt="profilePicture.alternativeText"
           />
           <small>{{ name }}</small>
         </article>
@@ -139,7 +142,10 @@ export default {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    let [countryNo, continentNo] = [45, 6];
+    let [countryNo, continentNo] = [
+      this.podcastPageData.countryNo,
+      this.podcastPageData.continentNo,
+    ];
 
     document.querySelectorAll("[aos]").forEach((el) => {
       gsap.fromTo(
@@ -233,34 +239,20 @@ export default {
 
   methods: {},
 
-  data() {
+  async asyncData({ $axios }) {
+    const baseUrl = "https://saft-strapi-backend.herokuapp.com";
+    const get = async (endpoint) => await $axios.$get(baseUrl + endpoint);
+    const podcastPageData = await get("/podcast-page");
+    const podcastGuests = await get("/podcast-guests");
+
     return {
-      guests: [
-        "Brian Auten",
-        "Greg Koukl",
-        "Sean McDowell",
-        "Justin Brierley",
-        "William Lane Craig",
-        "Frank Turek",
-        "J Warner Wallace",
-        "Michael L Brown",
-        "Clay Jones",
-        "Bo Bennett",
-        "Abdu Murray",
-        "Joel Ivy",
-        "Godwin Thomas John",
-        "Neil Reuben",
-        "Jerin Thomas",
-        "Chris BZ",
-        "Sam Shamoun",
-        "Lukas Rueegger",
-        "Tom Gilson",
-        "Alisa Childers",
-        "Xandra Caroll",
-        "Hillary Morgan Ferrer",
-        "Lydia McGrew",
-      ],
+      podcastPageData,
+      podcastGuests,
     };
+  },
+
+  data() {
+    return {};
   },
 };
 </script>

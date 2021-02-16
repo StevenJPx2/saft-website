@@ -18,7 +18,8 @@
     "core-js": "^3.6.5",
     "gsap": "^3.5.1",
     "nuxt": "^2.14.12",
-    "nuxt-fontawesome": "^0.4.0"
+    "nuxt-fontawesome": "^0.4.0",
+    "showdown": "^1.9.1"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^3.3.4",
