@@ -79,27 +79,27 @@
             All Rights Reserved by SAFT
           </p>
         </div>
-        <li class="sitemap">
-          <ul>
+        <ul class="sitemap">
+          <li>
             <nuxt-link to="/">Home</nuxt-link>
-          </ul>
-          <ul>
+          </li>
+          <li>
             <nuxt-link to="/about">About</nuxt-link>
-          </ul>
-          <ul>
+          </li>
+          <li>
             <nuxt-link to="/podcast">Podcast</nuxt-link>
-          </ul>
-          <ul>
+          </li>
+          <li>
             <a href="https://areopagus.saftapologetics.com" target="_blank"
               >Areopagus</a
             >
-          </ul>
-          <ul class="patreon-link">
+          </li>
+          <li class="patreon-link">
             <a href="https://www.patreon.com/saftapologetics" target="_blank">
               <icon class="mr-2" name="patreon" type="fab" />Support Us
             </a>
-          </ul>
-        </li>
+          </li>
+        </ul>
       </div>
     </footer>
   </div>
