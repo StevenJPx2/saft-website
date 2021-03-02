@@ -314,7 +314,7 @@ footer {
       @apply list-none;
       @apply font-medium;
 
-      ul {
+      li {
         @apply mb-4;
 
         &.patreon-link {
