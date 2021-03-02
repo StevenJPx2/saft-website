@@ -321,7 +321,7 @@ export default {
   },
 
   async asyncData({ $axios }) {
-    const baseUrl = "https://saft-strapi-backend.herokuapp.com";
+    const baseUrl = "https://admin.saftapologetics.com";
     const get = async (endpoint) => await $axios.$get(baseUrl + endpoint);
     const homePageData = await get("/home-page");
     const coreTeamMembers = await get("/core-teams");
