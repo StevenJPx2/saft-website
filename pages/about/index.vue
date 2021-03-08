@@ -180,45 +180,8 @@ export default {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    document.querySelectorAll("[aos], .endorsements--card").forEach((el) => {
-      gsap.fromTo(
-        el,
-        {
-          opacity: 0,
-          y: 50,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: el,
-            toggleActions: "restart continue play reverse",
-          },
-        }
-      );
-    });
-
-    document.querySelectorAll(".btn").forEach((el) => {
-      gsap.fromTo(
-        el,
-        {
-          opacity: 0,
-          scale: 1.2,
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 2,
-          ease: "elastic.out(1, 0.3)",
-          scrollTrigger: {
-            trigger: el,
-            toggleActions: "restart continue play reverse",
-          },
-        }
-      );
-    });
+    this.$store.commit("initAnimations");
+    this.$store.commit("aos", ".endorsements--card");
 
     document.querySelectorAll(".scroll-circle").forEach((el) => {
       gsap.fromTo(
