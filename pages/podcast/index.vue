@@ -202,6 +202,8 @@ export default {
     const podcastPageData = await get("/podcast-page");
     const podcastGuests = await get("/podcast-guests");
 
+    podcastGuests.sort((first, second) => (first.nid > second.nid ? 1 : -1));
+
     return {
       podcastPageData,
       podcastGuests,
