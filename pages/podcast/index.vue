@@ -3,11 +3,7 @@
     <section class="container">
       <h1 class="mb-8" aos>SAFT Podcast</h1>
       <p aos>
-        SAFT Podcast brings to you the rational and relevant defense of the
-        Christian worldview. We also introduce to the audience the research done
-        in the field of Christian Apologetics and the individuals who defend the
-        Christian faith by featuring the greatest minds of the Christian
-        Apologetics arena. This is a podcast for both the expert and the layman.
+       {{ podcastPageData.description }} 
       </p>
       <br />
       <p aos>Listen to our latest episode here.</p>
