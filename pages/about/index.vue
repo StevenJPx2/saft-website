@@ -12,8 +12,8 @@
       </article>
     </section>
 
-    <section class="absolute md:relative">
-      <div class="relative md:absolute scroll-circle left-2/3">
+    <section class="flex">
+      <div class="ml-auto scroll-circle">
         <div
           class="relative w-48 h-48 overflow-x-hidden rounded-full shadow-2xl md:h-72 md:w-72 light-gradient"
         ></div>
@@ -22,8 +22,6 @@
         ></div>
       </div>
     </section>
-
-    <section class="h-64 md:h-96"></section>
 
     <section class="mt-0 from-founder container-light">
       <article class="text-article">
@@ -118,15 +116,11 @@
       </div>
     </section>
 
-    <section class="absolute w-full pt-10 lg:absolute pb-14">
-      <div class="relative -right-32 lg:absolute lg:left-2/3 w-max">
-        <div
-          class="relative w-48 h-48 rounded-full shadow-2xl lg:absolute md:h-72 md:w-72 darker-gradient scroll-circle"
-        ></div>
-      </div>
+    <section class="w-full pt-10 pb-14">
+      <div
+        class="relative w-48 h-48 ml-auto rounded-full shadow-2xl md:h-72 md:w-72 darker-gradient scroll-circle"
+      ></div>
     </section>
-
-    <section class="h-72"></section>
 
     <section id="endorsements" class="container endorsements">
       <h1 class="mb-12 md:mb-24" aos>Endorsements</h1>
