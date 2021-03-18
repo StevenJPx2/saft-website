@@ -208,6 +208,7 @@ export default {
     const advisoryBoardMembers = await get("/advisory-board-members");
 
     endorsements.sort((first, second) => (first.nid > second.nid ? 1 : -1));
+    coreTeamMembers.sort((first, second) => (first.id > second.id ? 1 : -1));
 
     return {
       aboutPageData,

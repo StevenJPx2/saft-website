@@ -272,6 +272,8 @@ export default {
     const homePageData = await get("/home-page");
     const coreTeamMembers = await get("/core-teams");
 
+    coreTeamMembers.sort((first, second) => (first.id > second.id ? 1 : -1));
+
     return { homePageData, coreTeamMembers };
   },
 };
