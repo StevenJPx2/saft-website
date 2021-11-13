@@ -9,11 +9,11 @@
           ></div>
           <div
             id="main-circle-2"
-            class="relative rounded-full shadow-xl dark-gradient -left-20 -top-14"
+            class="relative -top-14 -left-20 rounded-full shadow-xl dark-gradient"
           ></div>
         </div>
         <h1
-          class="absolute z-10 w-4/6 font-extrabold top-1/3 md:w-1/4"
+          class="absolute top-1/3 z-10 w-4/6 font-extrabold md:w-1/4"
           style="line-height: 3.15rem"
         >
           <div class="inline-block main-line">SEEKING</div>
@@ -64,7 +64,7 @@
             <h2 class="uppercase">What do we do?</h2>
             <p>{{ homePageData.whatWeDo }}</p>
           </div>
-          <div class="flex w-full mt-4">
+          <div class="flex mt-4 w-full">
             <div class="w-full"></div>
             <nuxt-link to="/about#core-team" class="flex-none btn"
               >More<icon class="ml-2" name="arrow-right" />
@@ -92,17 +92,16 @@
             Founder-Emeritus, Apologetics315
           </h4>
         </section>
-        <section class="endorsements--card md:row-start-2 md:col-start-2" aos>
+        <section class="md:col-start-2 md:row-start-2 endorsements--card" aos>
           <p class="endorsements--card--desc">
-            ...My Best Wishes, Prayers and Blessings goes with the SAFT team...
+            ...the team at SAFT are not afraid to tackle the hardest questions...
           </p>
-          <h3 class="endorsements--card--name">P Anupam Nayak</h3>
+          <h3 class="endorsements--card--name">Fazale 'Fuz' Rana</h3>
           <h4 class="endorsements--card--title">
-            Associate National Director, India Campus Crusade for Christ, East
-            India
+            Vice President Of Research And Apologetics, Reasons To Believe
           </h4>
         </section>
-        <section class="endorsements--card md:row-start-3 md:col-start-1" aos>
+        <section class="md:col-start-1 md:row-start-3 endorsements--card" aos>
           <p class="endorsements--card--desc">
             ...I highly commend them to you...
           </p>
@@ -114,7 +113,7 @@
         </section>
         <nuxt-link
           to="/about#endorsements"
-          class="mt-4 btn md:col-start-2 md:row-start-4 place-self-end"
+          class="place-self-end mt-4 md:col-start-2 md:row-start-4 btn"
           >More<icon class="ml-2" name="arrow-right" />
         </nuxt-link>
       </div>
@@ -161,7 +160,7 @@
       </article>
       <nuxt-link
         to="/podcast"
-        class="mt-4 btn md:col-start-2 md:row-start-4 place-self-end"
+        class="place-self-end mt-4 md:col-start-2 md:row-start-4 btn"
         >More<icon class="ml-2" name="arrow-right" />
       </nuxt-link>
     </section>
@@ -180,8 +179,7 @@ export default {
         {
           type: "text/javascript",
           charset: "utf-8",
-          src:
-            "https://www.buzzsprout.com/1034671.js?container_id=buzzsprout-small-player-1034671&player=small&limit=1",
+          src: "https://www.buzzsprout.com/1034671.js?container_id=buzzsprout-small-player-1034671&player=small&limit=1",
           body: true,
           defer: true,
         },

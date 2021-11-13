@@ -6,7 +6,7 @@
           id="typeform"
           src="@/assets/saft-typeform.svg"
           alt="SAFT Logo"
-          class="mb-2"
+          class=""
         />
         <button
           id="hamburger"
