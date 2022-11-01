@@ -201,8 +201,6 @@ export default {
     const podcastPageData = await api.singleton("Podcast").read();
     const podcastGuests = await api.singleton("Podcast_Guests").read();
 
-    podcastGuests.sort((first, second) => (first.nid > second.nid ? 1 : -1));
-
     return {
       podcastPageData,
       podcastGuests,

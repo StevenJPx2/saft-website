@@ -40,12 +40,12 @@
           <nuxt-link to="/podcast">Podcast</nuxt-link>
         </li>
         <li>
+          <a href="https://blog.saftapologetics.com" target="_blank">Blog</a>
+        </li>
+        <li>
           <a href="https://areopagus.saftapologetics.com" target="_blank"
             >Areopagus</a
           >
-        </li>
-        <li>
-          <a href="https://blog.saftapologetics.com" target="_blank">Blog</a>
         </li>
       </ul>
     </nav>
@@ -90,12 +90,12 @@
             <nuxt-link to="/podcast">Podcast</nuxt-link>
           </li>
           <li>
+            <a href="https://blog.saftapologetics.com" target="_blank">Blog</a>
+          </li>
+          <li>
             <a href="https://areopagus.saftapologetics.com" target="_blank"
               >Areopagus</a
             >
-          </li>
-          <li>
-            <a href="https://blog.saftapologetics.com" target="_blank">Blog</a>
           </li>
         </ul>
       </div>

@@ -181,9 +181,6 @@ export default {
     const endorsements = await api.singleton("Testimonials").read();
     const advisoryBoardMembers = await api.singleton("Advisory_Board").read();
 
-    endorsements.sort((first, second) => (first.nid > second.nid ? 1 : -1));
-    coreTeamMembers.sort((first, second) => (first.id > second.id ? 1 : -1));
-
     return {
       aboutPageData,
       coreTeamMembers,
