@@ -40,9 +40,7 @@ export default {
 
   buildModules: ["@nuxtjs/fontawesome"],
 
-  modules: ["@nuxtjs/axios", "@nuxtjs/tailwindcss"],
-
-  axios: {},
+  modules: ["@nuxtjs/tailwindcss"],
 
   fontawesome: {
     icons: {
@@ -52,5 +50,11 @@ export default {
     },
   },
 
-  build: {},
+  build: {
+    postcss: {
+      plugins: {
+        "postcss-custom-properties": false,
+      },
+    },
+  },
 };

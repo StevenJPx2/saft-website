@@ -1,5 +1,5 @@
 <template>
-  <fa :icon="[type, name]"></fa>
+  <font-awesome-icon :icon="[type, name]"></font-awesome-icon>
 </template>
 
 <script>
