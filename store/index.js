@@ -2,6 +2,7 @@ import { gsap } from "gsap";
 
 export const state = () => ({
   pageNo: 0,
+  directusUrl: "https://5ms1k56r.directus.app/",
 });
 
 export const mutations = {

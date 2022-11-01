@@ -3,7 +3,7 @@
     <section class="container">
       <h1 class="mb-8" aos>SAFT Podcast</h1>
       <p aos>
-       {{ podcastPageData.description }} 
+        {{ podcastPageData.podcast_description }}
       </p>
       <br />
       <p aos>Listen to our latest episode here.</p>
@@ -88,14 +88,14 @@
       <h1 class="mt-16 mb-24" aos>Guests</h1>
       <div class="flex flex-wrap">
         <article
-          v-for="{ id, name, profilePicture } in podcastGuests"
+          v-for="{ id, name, img } in podcastGuests"
           :key="id"
           class="guest"
           aos
         >
           <img
-            :src="profilePicture.url"
-            :alt="profilePicture.alternativeText"
+            :src="`https://5ms1k56r.directus.app/assets/${img}`"
+            :alt="name"
           />
           <small>{{ name }}</small>
         </article>
@@ -105,6 +105,7 @@
 </template>
 
 <script>
+import { Directus } from "@directus/sdk";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -116,8 +117,7 @@ export default {
         {
           type: "text/javascript",
           charset: "utf-8",
-          src:
-            "https://www.buzzsprout.com/1034671.js?container_id=buzzsprout-small-player-1034671&player=small&limit=1",
+          src: "https://www.buzzsprout.com/1034671.js?container_id=buzzsprout-small-player-1034671&player=small&limit=1",
           body: true,
           defer: true,
         },
@@ -126,7 +126,7 @@ export default {
         {
           hid: "description",
           name: "description",
-          content: `This is a podcast for the expert and the layman. 
+          content: `This is a podcast for the expert and the layman.
           Join us in exploring the rational defense of Christianity.`,
         },
       ],
@@ -140,8 +140,8 @@ export default {
     gsap.registerPlugin(ScrollTrigger);
 
     let [countryNo, continentNo] = [
-      this.podcastPageData.countryNo,
-      this.podcastPageData.continentNo,
+      this.podcastPageData.no_of_countries,
+      this.podcastPageData.no_of_continents,
     ];
 
     [
@@ -196,11 +196,10 @@ export default {
 
   methods: {},
 
-  async asyncData({ $axios }) {
-    const baseUrl = "https://admin.saftapologetics.com";
-    const get = async (endpoint) => await $axios.$get(baseUrl + endpoint);
-    const podcastPageData = await get("/podcast-page");
-    const podcastGuests = await get("/podcast-guests");
+  async asyncData() {
+    const api = new Directus("https://5ms1k56r.directus.app/");
+    const podcastPageData = await api.singleton("Podcast").read();
+    const podcastGuests = await api.singleton("Podcast_Guests").read();
 
     podcastGuests.sort((first, second) => (first.nid > second.nid ? 1 : -1));
 

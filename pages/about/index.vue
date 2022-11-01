@@ -2,14 +2,11 @@
   <div>
     <section class="container pt-12 about-us">
       <h1 class="mb-8" aos>About Us</h1>
-      <article class="about-us--desc" aos>
-        <p
-          class="mb-3"
-          v-for="(body, index) in aboutPageData.aboutUs.split('\n\n')"
-          :key="index"
-          v-html="htmlify(body)"
-        ></p>
-      </article>
+      <article
+        class="about-us--desc"
+        aos
+        v-html="aboutPageData.about_us"
+      ></article>
     </section>
 
     <section class="flex">
@@ -26,13 +23,11 @@
     <section class="mt-0 from-founder container-light">
       <article class="text-article">
         <h1 class="mb-8" aos>From Founder's Desk</h1>
-        <div class="from-founder--text" aos>
-          <p
-            v-for="(body, index) in aboutPageData.fromFounder.split('\n\n')"
-            :key="index"
-            v-html="htmlify(body)"
-          ></p>
-        </div>
+        <div
+          class="from-founder--text [&>p]:mb-3"
+          aos
+          v-html="aboutPageData.from_founders_desk"
+        ></div>
       </article>
     </section>
 
@@ -67,21 +62,15 @@
       <h1 class="mb-24 md:mb-32" aos>Our Core Team</h1>
       <article
         class="core-team--card"
-        v-for="{
-          id,
-          fullName,
-          title,
-          description,
-          profilePicture,
-        } in coreTeamMembers"
+        v-for="{ id, name, title, description, img } in coreTeamMembers"
         :key="id"
       >
         <img
-          :src="profilePicture.url"
-          alt="profilePicture.alternativeText"
+          :src="`https://5ms1k56r.directus.app/assets/${img}`"
+          :alt="name"
           aos
         />
-        <h3 aos>{{ fullName }}</h3>
+        <h3 aos>{{ name }}</h3>
         <h4 aos>{{ title }}</h4>
         <p aos>{{ description }}</p>
       </article>
@@ -90,26 +79,21 @@
     <section class="container-light">
       <div class="container">
         <h1 class="mb-8" aos>Advisory Board</h1>
-        <p aos>{{ aboutPageData.advisoryBoard }}</p>
+        <p aos>{{ aboutPageData.advisory_board_description }}</p>
 
         <article class="advisory-board">
           <section
             class="advisory-board--card"
-            v-for="{
-              id,
-              fullName,
-              title,
-              profilePicture,
-            } in advisoryBoardMembers"
+            v-for="{ id, name, title, img } in advisoryBoardMembers"
             :key="id"
             aos
           >
             <img
-              :src="profilePicture.url"
-              alt="profilePicture.alternativeText"
+              :src="`https://5ms1k56r.directus.app/assets/${img}`"
+              :alt="name"
               aos
             />
-            <p>{{ fullName }}</p>
+            <p>{{ name }}</p>
             <small>{{ title }}</small>
           </section>
         </article>
@@ -126,33 +110,28 @@
       <h1 class="mb-12 md:mb-24" aos>Endorsements</h1>
       <article
         class="endorsements--card"
-        v-for="{ id, fullName, title, description } in endorsements"
+        v-for="{ id, name, title, body } in endorsements"
         :key="id"
       >
-        <p>{{ description }}</p>
-        <h5>{{ fullName }} ({{ title }})</h5>
+        <div v-html="body" class="mb-3"></div>
+        <h5>{{ name }}</h5>
+        <p>{{ title }}</p>
       </article>
     </section>
 
     <section class="container-light">
       <article class="statement text-article" aos>
         <h1 class="mb-8">Statement of Faith</h1>
-        <p
-          v-for="(body, index) in aboutPageData.faithStatement.split('\n\n')"
-          :key="index"
-          v-html="htmlify(body)"
-        ></p>
+        <div class="[&>p]:mb-3" v-html="aboutPageData.statement_of_faith"></div>
       </article>
     </section>
   </div>
 </template>
 
 <script>
+import { Directus } from "@directus/sdk";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
-const showdown = require("showdown");
-const converter = new showdown.Converter();
 
 export default {
   head() {
@@ -195,17 +174,12 @@ export default {
     });
   },
 
-  methods: {
-    htmlify: (text) => converter.makeHtml(text),
-  },
-
-  async asyncData({ $axios }) {
-    const baseUrl = "https://admin.saftapologetics.com";
-    const get = async (endpoint) => await $axios.$get(baseUrl + endpoint);
-    const aboutPageData = await get("/about-page");
-    const coreTeamMembers = await get("/core-teams");
-    const endorsements = await get("/endorsements");
-    const advisoryBoardMembers = await get("/advisory-board-members");
+  async asyncData() {
+    const api = new Directus("https://5ms1k56r.directus.app/");
+    const aboutPageData = await api.singleton("About").read();
+    const coreTeamMembers = await api.singleton("Team").read();
+    const endorsements = await api.singleton("Testimonials").read();
+    const advisoryBoardMembers = await api.singleton("Advisory_Board").read();
 
     endorsements.sort((first, second) => (first.nid > second.nid ? 1 : -1));
     coreTeamMembers.sort((first, second) => (first.id > second.id ? 1 : -1));

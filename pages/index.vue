@@ -29,21 +29,15 @@
         <div id="founder-images">
           <div
             class="card"
-            v-for="{
-              id,
-              fullName,
-              title,
-              description,
-              profilePicture,
-            } in coreTeamMembers"
+            v-for="{ id, name, title, description, img } in coreTeamMembers"
             :key="id"
           >
             <img
-              :src="profilePicture.url"
-              alt="profilePicture.alternativeText"
+              :src="`https://5ms1k56r.directus.app/assets/${img}`"
+              :alt="name"
             />
             <div class="card--details">
-              <h2 class="card--details--title">{{ fullName }}</h2>
+              <h2 class="card--details--title">{{ name }}</h2>
               <h3 class="card--details--subtitle">{{ title }}</h3>
               <p class="card--details--desc">
                 {{ description.substr(0, 160) + "..." }}
@@ -56,13 +50,13 @@
           <div aos>
             <h2 class="uppercase">Who are we?</h2>
             <p>
-              {{ homePageData.whoWeAre }}
+              {{ homePageData.who_are_we }}
             </p>
           </div>
           <br />
           <div aos>
             <h2 class="uppercase">What do we do?</h2>
-            <p>{{ homePageData.whatWeDo }}</p>
+            <p>{{ homePageData.what_we_do }}</p>
           </div>
           <div class="flex mt-4 w-full">
             <div class="w-full"></div>
@@ -94,7 +88,8 @@
         </section>
         <section class="md:col-start-2 md:row-start-2 endorsements--card" aos>
           <p class="endorsements--card--desc">
-            ...the team at SAFT are not afraid to tackle the hardest questions...
+            ...the team at SAFT are not afraid to tackle the hardest
+            questions...
           </p>
           <h3 class="endorsements--card--name">Fazale 'Fuz' Rana</h3>
           <h4 class="endorsements--card--title">
@@ -170,6 +165,7 @@
 <script>
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { Directus } from "@directus/sdk";
 
 export default {
   head() {
@@ -264,15 +260,14 @@ export default {
     this.$store.commit("page", 0);
   },
 
-  async asyncData({ $axios }) {
-    const baseUrl = "https://admin.saftapologetics.com";
-    const get = async (endpoint) => await $axios.$get(baseUrl + endpoint);
-    const homePageData = await get("/home-page");
-    const coreTeamMembers = await get("/core-teams");
+  async asyncData() {
+    const api = new Directus("https://5ms1k56r.directus.app/");
+    const homePageData = await api.singleton("Home").read();
+    const coreTeamMembers = await api.singleton("Team").read();
+    const res = { homePageData, coreTeamMembers };
+    console.log(res);
 
-    coreTeamMembers.sort((first, second) => (first.id > second.id ? 1 : -1));
-
-    return { homePageData, coreTeamMembers };
+    return res;
   },
 };
 </script>
@@ -361,9 +356,11 @@ export default {
     @apply ease-in-out;
     @apply opacity-0;
     transform: translateX(-100%);
+    height: 120px;
     width: 300px;
     @apply px-5;
     @apply py-5;
+    @apply overflow-hidden;
 
     &--title {
       @apply uppercase;
@@ -518,6 +515,7 @@ export default {
 
     &--details {
       @apply block;
+      height: 200px;
     }
 
     &:hover {

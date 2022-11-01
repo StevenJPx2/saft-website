@@ -2,8 +2,17 @@
   <div id="outer">
     <nav id="navbar">
       <div class="navbar-inner">
-        <img id="typeform" src="@/assets/saft-typeform.svg" alt="SAFT Logo" class="" />
-        <button id="hamburger" :class="{ focused: navBarFocused }" @click="toggleHamburger()">
+        <img
+          id="typeform"
+          src="@/assets/saft-typeform.svg"
+          alt="SAFT Logo"
+          class=""
+        />
+        <button
+          id="hamburger"
+          :class="{ focused: navBarFocused }"
+          @click="toggleHamburger()"
+        >
           <svg width="30px" height="25px" viewBox="0 0 30 25">
             <rect id="rect-1" x="0" y="0" width="30" height="4" rx="2"></rect>
             <rect id="rect-2" x="6" y="10" width="24" height="4" rx="2"></rect>
@@ -12,28 +21,40 @@
         </button>
       </div>
       <ul class="links" :class="{ appear: navBarFocused }">
-        <li :class="{ active: this.$store.state.pageNo == 0 }" @click="toggleHamburger()">
+        <li
+          :class="{ active: this.$store.state.pageNo == 0 }"
+          @click="toggleHamburger()"
+        >
           <nuxt-link to="/">Home</nuxt-link>
         </li>
-        <li :class="{ active: this.$store.state.pageNo == 1 }" @click="toggleHamburger()">
+        <li
+          :class="{ active: this.$store.state.pageNo == 1 }"
+          @click="toggleHamburger()"
+        >
           <nuxt-link to="/about">About</nuxt-link>
         </li>
-        <li :class="{ active: this.$store.state.pageNo == 2 }" @click="toggleHamburger()">
+        <li
+          :class="{ active: this.$store.state.pageNo == 2 }"
+          @click="toggleHamburger()"
+        >
           <nuxt-link to="/podcast">Podcast</nuxt-link>
         </li>
         <li>
-          <a href="https://areopagus.saftapologetics.com" target="_blank">Areopagus</a>
+          <a href="https://areopagus.saftapologetics.com" target="_blank"
+            >Areopagus</a
+          >
         </li>
-        <li class="patreon-link hidden">
-          <a href="https://www.patreon.com/saftapologetics" target="_blank">
-            Support Us
-            <icon class="ml-1" name="patreon" type="fab" />
-          </a>
+        <li>
+          <a href="https://blog.saftapologetics.com" target="_blank">Blog</a>
         </li>
       </ul>
     </nav>
     <div style="height: 100px"></div>
-    <div class="fixed inset-0 z-30" :class="{ hidden: !navBarFocused }" @click="toggleHamburger()"></div>
+    <div
+      class="fixed inset-0 z-30"
+      :class="{ hidden: !navBarFocused }"
+      @click="toggleHamburger()"
+    ></div>
 
     <Nuxt />
 
@@ -69,12 +90,12 @@
             <nuxt-link to="/podcast">Podcast</nuxt-link>
           </li>
           <li>
-            <a href="https://areopagus.saftapologetics.com" target="_blank">Areopagus</a>
+            <a href="https://areopagus.saftapologetics.com" target="_blank"
+              >Areopagus</a
+            >
           </li>
-          <li class="patreon-link hidden">
-            <a href="https://www.patreon.com/saftapologetics" target="_blank">
-              <icon class="mr-2" name="patreon" type="fab" />Support Us
-            </a>
+          <li>
+            <a href="https://blog.saftapologetics.com" target="_blank">Blog</a>
           </li>
         </ul>
       </div>
@@ -163,7 +184,7 @@ export default {
     };
   },
 
-  mounted() { },
+  mounted() {},
 };
 </script>
 

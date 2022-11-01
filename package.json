@@ -9,26 +9,22 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-brands-svg-icons": "^5.15.1",
-    "@fortawesome/free-regular-svg-icons": "^5.15.1",
-    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@directus/sdk": "^10.1.4",
     "@nuxtjs/axios": "^5.12.4",
-    "@nuxtjs/fontawesome": "^1.1.2",
     "core-js": "^3.6.5",
     "gsap": "^3.5.1",
     "nuxt": "^2.15.8",
-    "nuxt-fontawesome": "^0.4.0",
-    "showdown": "^1.9.1"
+    "showdown": "^2.1.0"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^3.4.3",
-    "autoprefixer": "^9.8.6",
-    "fibers": "^5.0.0",
-    "postcss": "^7.0.35",
+    "@fortawesome/free-brands-svg-icons": "^5",
+    "@fortawesome/free-regular-svg-icons": "^5",
+    "@fortawesome/free-solid-svg-icons": "^5",
+    "@nuxtjs/fontawesome": "^1.1.2",
+    "@nuxtjs/tailwindcss": "^6.1.2",
     "sass": "^1.30.0",
-    "sass-loader": "^10.1.1",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
-    "webpack": "^4.46.0"
+    "sass-loader": "^10",
+    "typescript": "^4.8.4",
+    "webpack": "^5.74.0"
   }
 }
