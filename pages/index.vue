@@ -344,6 +344,7 @@ export default {
     width: 120px;
     height: 120px;
     @apply row-span-3;
+    @apply object-cover;
   }
 
   &--details {
