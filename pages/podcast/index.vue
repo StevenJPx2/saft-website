@@ -3,7 +3,7 @@
     <section class="container">
       <h1 class="mb-8" aos>SAFT Podcast</h1>
       <p aos>
-        {{ podcastPageData.podcast_description }}
+        {{ podcastPageData.podcastDescription }}
       </p>
       <br />
       <p aos>Listen to our latest episode here.</p>
@@ -88,15 +88,12 @@
       <h1 class="mt-16 mb-24" aos>Guests</h1>
       <div class="flex flex-wrap">
         <article
-          v-for="{ id, name, img } in podcastGuests"
-          :key="id"
+          v-for="{ _id, name, imageId } in podcastGuests"
+          :key="_id"
           class="guest"
           aos
         >
-          <img
-            :src="`https://5ms1k56r.directus.app/assets/${img}`"
-            :alt="name"
-          />
+          <sanity-image v-if="imageId" :asset-id="imageId" />
           <small>{{ name }}</small>
         </article>
       </div>
@@ -141,8 +138,8 @@ export default defineComponent({
     gsap.registerPlugin(ScrollTrigger);
 
     let [countryNo, continentNo] = [
-      this.podcastPageData.no_of_countries,
-      this.podcastPageData.no_of_continents,
+      this.podcastPageData.noOfCountries,
+      this.podcastPageData.noOfContinents,
     ];
 
     [
@@ -206,10 +203,11 @@ export default defineComponent({
   noOfContinents,
   noOfCountries
 }`);
-    const podcastGuests = await $sanity.fetch(groq`*[_type == 'podcastGuests'] {
+    const podcastGuests =
+      await $sanity.fetch(groq`*[_type == 'podcastGuests']|order(orderRank) {
   _id,
   name,
-  img
+  "imageId": img.asset._ref
 }`);
 
     return {

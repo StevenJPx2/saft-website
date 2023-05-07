@@ -5,7 +5,7 @@
       <article
         class="about-us--desc"
         aos
-        v-html="aboutPageData.about_us"
+        v-html="aboutPageData.aboutUs"
       ></article>
     </section>
 
@@ -23,11 +23,9 @@
     <section class="mt-0 from-founder container-light">
       <article class="text-article">
         <h1 class="mb-8" aos>From Founder's Desk</h1>
-        <div
-          class="from-founder--text [&>p]:mb-3"
-          aos
-          v-html="aboutPageData.from_founders_desk"
-        ></div>
+        <div class="from-founder--text [&>p]:mb-3" aos>
+          <sanity-content :blocks="aboutPageData.fromFoundersDesk" />
+        </div>
       </article>
     </section>
 
@@ -62,14 +60,10 @@
       <h1 class="mb-24 md:mb-32" aos>Our Core Team</h1>
       <article
         class="core-team--card"
-        v-for="{ id, name, title, description, img } in coreTeamMembers"
-        :key="id"
+        v-for="{ _id, name, title, description, imageId } in coreTeamMembers"
+        :key="_id"
       >
-        <img
-          :src="`https://5ms1k56r.directus.app/assets/${img}`"
-          :alt="name"
-          aos
-        />
+        <sanity-image v-if="imageId" :asset-id="imageId" aos />
         <h3 aos>{{ name }}</h3>
         <h4 aos>{{ title }}</h4>
         <p aos>{{ description }}</p>
@@ -79,20 +73,16 @@
     <section class="container-light">
       <div class="container">
         <h1 class="mb-8" aos>Advisory Board</h1>
-        <p aos>{{ aboutPageData.advisory_board_description }}</p>
+        <p aos>{{ aboutPageData.advisoryBoardDescription }}</p>
 
         <article class="advisory-board">
           <section
             class="advisory-board--card"
-            v-for="{ id, name, title, img } in advisoryBoardMembers"
+            v-for="{ id, name, title, imageId } in advisoryBoardMembers"
             :key="id"
             aos
           >
-            <img
-              :src="`https://5ms1k56r.directus.app/assets/${img}`"
-              :alt="name"
-              aos
-            />
+            <sanity-image v-if="imageId" :asset-id="imageId" aos />
             <p>{{ name }}</p>
             <small>{{ title }}</small>
           </section>
@@ -110,8 +100,8 @@
       <h1 class="mb-12 md:mb-24" aos>Endorsements</h1>
       <article
         class="endorsements--card"
-        v-for="{ id, name, title, body } in endorsements"
-        :key="id"
+        v-for="{ _id, name, title, body } in endorsements"
+        :key="_id"
       >
         <div v-html="body" class="mb-3"></div>
         <h5>{{ name }}</h5>
@@ -122,7 +112,9 @@
     <section class="container-light">
       <article class="statement text-article" aos>
         <h1 class="mb-8">Statement of Faith</h1>
-        <div class="[&>p]:mb-3" v-html="aboutPageData.statement_of_faith"></div>
+        <div class="[&>p]:mb-3">
+          <sanity-content :blocks="aboutPageData.statementOfFaith" />
+        </div>
       </article>
     </section>
   </div>
@@ -192,23 +184,25 @@ export default defineComponent({
         description: string;
         imageId?: string;
       }[]
-    >(groq`*[_type == 'coreTeam'] {
+    >(groq`*[_type == 'coreTeam']|order(orderRank) {
   _id,
   title,
   name,
   description,
   "imageId": img.asset._ref
 }`);
-    const endorsements = await $sanity.fetch(groq`*[_type == 'endorsements'] {
+    const endorsements =
+      await $sanity.fetch(groq`*[_type == 'endorsements']|order(orderRank) {
   _id,
   name,
   body,
   title
 }`);
     const advisoryBoardMembers =
-      await $sanity.fetch(groq`*[_type == 'advisoryBoard'] {
+      await $sanity.fetch(groq`*[_type == 'advisoryBoard']|order(orderRank) {
   name,
-  title
+  title,
+  "imageId": img.asset._ref
 }`);
 
     return {
