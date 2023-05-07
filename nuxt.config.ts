@@ -1,4 +1,5 @@
-export default {
+import type { NuxtConfig } from "@nuxt/types";
+export default <NuxtConfig>{
   target: "static",
   head: {
     title: "SAFT Apologetics",
@@ -38,9 +39,12 @@ export default {
 
   components: true,
 
-  buildModules: ["@nuxtjs/fontawesome"],
-
-  modules: ["@nuxtjs/tailwindcss"],
+  buildModules: [
+    "@nuxtjs/fontawesome",
+    "@nuxt/typescript-build",
+    "@nuxtjs/tailwindcss",
+  ],
+  modules: ["@nuxtjs/sanity/module"],
 
   fontawesome: {
     icons: {
@@ -50,10 +54,16 @@ export default {
     },
   },
 
+  sanity: {
+    projectId: "yx9t2mzc",
+  },
+
   build: {
     postcss: {
-      plugins: {
-        "postcss-custom-properties": false,
+      postcssOptions: {
+        plugins: {
+          "postcss-custom-properties": false,
+        },
       },
     },
   },

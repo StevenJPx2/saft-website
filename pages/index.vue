@@ -3,19 +3,10 @@
     <header class="hero main-header">
       <div class="container text-white">
         <div class="relative top-12 left-2/4 w-max">
-          <div
-            id="main-circle"
-            class="rounded-full shadow-xl light-gradient"
-          ></div>
-          <div
-            id="main-circle-2"
-            class="relative -top-14 -left-20 rounded-full shadow-xl dark-gradient"
-          ></div>
+          <div id="main-circle" class="rounded-full shadow-xl light-gradient"></div>
+          <div id="main-circle-2" class="relative -top-14 -left-20 rounded-full shadow-xl dark-gradient"></div>
         </div>
-        <h1
-          class="absolute top-1/3 z-10 w-4/6 font-extrabold md:w-1/4"
-          style="line-height: 3.15rem"
-        >
+        <h1 class="absolute top-1/3 z-10 w-4/6 font-extrabold md:w-1/4" style="line-height: 3.15rem">
           <div class="inline-block main-line">SEEKING</div>
           <div class="inline-block main-line">ANSWERS,</div>
           <div class="inline-block main-line">FINDING</div>
@@ -27,15 +18,14 @@
     <section class="container-light">
       <div id="about-us" class="container relative">
         <div id="founder-images">
-          <div
-            class="card"
-            v-for="{ id, name, title, description, img } in coreTeamMembers"
-            :key="id"
-          >
-            <img
-              :src="`https://5ms1k56r.directus.app/assets/${img}`"
-              :alt="name"
-            />
+          <div class="card" v-for="{
+            _id,
+            name,
+            title,
+            description,
+            imageId,
+          } in coreTeamMembers" :key="_id">
+            <SanityImage v-if="imageId" :asset-id="imageId" :alt="name" />
             <div class="card--details">
               <h2 class="card--details--title">{{ name }}</h2>
               <h3 class="card--details--subtitle">{{ title }}</h3>
@@ -50,18 +40,18 @@
           <div aos>
             <h2 class="uppercase">Who are we?</h2>
             <p>
-              {{ homePageData.who_are_we }}
+              {{ homePageData.whoAreWe }}
             </p>
           </div>
           <br />
           <div aos>
             <h2 class="uppercase">What do we do?</h2>
-            <p>{{ homePageData.what_we_do }}</p>
+            <p>{{ homePageData.whatWeDo }}</p>
           </div>
           <div class="flex mt-4 w-full">
             <div class="w-full"></div>
-            <nuxt-link to="/about#core-team" class="flex-none btn"
-              >More<icon class="ml-2" name="arrow-right" />
+            <nuxt-link to="/about#core-team" class="flex-none btn">More
+              <icon class="ml-2" name="arrow-right" />
             </nuxt-link>
           </div>
         </div>
@@ -106,10 +96,8 @@
             Alliance, Canada
           </h4>
         </section>
-        <nuxt-link
-          to="/about#endorsements"
-          class="place-self-end mt-4 md:col-start-2 md:row-start-4 btn"
-          >More<icon class="ml-2" name="arrow-right" />
+        <nuxt-link to="/about#endorsements" class="place-self-end mt-4 md:col-start-2 md:row-start-4 btn">More
+          <icon class="ml-2" name="arrow-right" />
         </nuxt-link>
       </div>
     </section>
@@ -124,50 +112,29 @@
       </article>
 
       <article class="podcast--buttons">
-        <a
-          href="https://podcasts.apple.com/in/podcast/saft-podcast/id1511404295"
-          target="_blank"
-          aos
-          ><img
-            src="@/assets/apple-podcasts.png"
-            alt="Listen on Apple Podcasts"
-        /></a>
-        <a
-          href="https://podcasts.google.com/?feed=aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xMDM0NjcxLnJzcw=="
-          target="_blank"
-          aos
-          ><img
-            src="@/assets/google-podcasts.png"
-            alt="Listen on Google Podcasts"
-        /></a>
-        <a
-          href="https://open.spotify.com/show/4hOLouY5QFv3KuNNDUi5hM"
-          target="_blank"
-          aos
-          ><img src="@/assets/spotify-podcasts.png" alt="Listen on Spotify"
-        /></a>
-        <a
-          href="https://www.youtube.com/channel/UCBDroMQT6UM9RCK3vjdW6dA/videos"
-          target="_blank"
-          aos
-          ><img src="@/assets/youtube-podcasts.png" alt="Watch on Youtube"
-        /></a>
+        <a href="https://podcasts.apple.com/in/podcast/saft-podcast/id1511404295" target="_blank" aos><img
+            src="@/assets/apple-podcasts.png" alt="Listen on Apple Podcasts" /></a>
+        <a href="https://podcasts.google.com/?feed=aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xMDM0NjcxLnJzcw=="
+          target="_blank" aos><img src="@/assets/google-podcasts.png" alt="Listen on Google Podcasts" /></a>
+        <a href="https://open.spotify.com/show/4hOLouY5QFv3KuNNDUi5hM" target="_blank" aos><img
+            src="@/assets/spotify-podcasts.png" alt="Listen on Spotify" /></a>
+        <a href="https://www.youtube.com/channel/UCBDroMQT6UM9RCK3vjdW6dA/videos" target="_blank" aos><img
+            src="@/assets/youtube-podcasts.png" alt="Watch on Youtube" /></a>
       </article>
-      <nuxt-link
-        to="/podcast"
-        class="place-self-end mt-4 md:col-start-2 md:row-start-4 btn"
-        >More<icon class="ml-2" name="arrow-right" />
+      <nuxt-link to="/podcast" class="place-self-end mt-4 md:col-start-2 md:row-start-4 btn">More
+        <icon class="ml-2" name="arrow-right" />
       </nuxt-link>
     </section>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { Directus } from "@directus/sdk";
+import { groq } from "@nuxtjs/sanity";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   head() {
     return {
       title: "SAFT Apologetics",
@@ -260,16 +227,37 @@ export default {
     this.$store.commit("page", 0);
   },
 
-  async asyncData() {
-    const api = new Directus("https://5ms1k56r.directus.app/");
-    const homePageData = await api.singleton("Home").read();
-    const coreTeamMembers = await api.singleton("Team").read();
+  async asyncData({ app: { $sanity } }) {
+    const homePageData = await $sanity.fetch<{
+      whatWeDo: string;
+      tagline: string;
+      whoAreWe: string;
+    }>(groq`*[_type == 'homePage'][0] {
+  whatWeDo,
+  tagline,
+  whoAreWe
+}`);
+    const coreTeamMembers = await $sanity.fetch<
+      {
+        _id: string;
+        title: string;
+        name: string;
+        description: string;
+        imageId?: string;
+      }[]
+    >(groq`*[_type == 'coreTeam'] {
+  _id,
+  title,
+  name,
+  description,
+  "imageId": img.asset._ref
+}`);
     const res = { homePageData, coreTeamMembers };
     console.log(res);
 
     return res;
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -398,12 +386,14 @@ export default {
       @apply text-xl;
       @apply mb-4;
     }
+
     &--name {
       @apply text-lg;
       @apply uppercase;
       @apply font-bold;
       @apply mb-1;
     }
+
     &--title {
       @apply text-lg;
       @apply uppercase;

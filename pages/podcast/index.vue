@@ -104,12 +104,13 @@
   </div>
 </template>
 
-<script>
-import { Directus } from "@directus/sdk";
+<script lang="ts">
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { defineComponent } from "vue";
+import { groq } from "@nuxtjs/sanity";
 
-export default {
+export default defineComponent({
   head() {
     return {
       title: "SAFT Apologetics | Podcast",
@@ -155,8 +156,10 @@ export default {
 
       const el = document.querySelector(item.name);
 
+      if (!el) return;
+
       animation.eventCallback("onUpdate", () => {
-        el.innerHTML = Math.round(item.num * animation.ratio);
+        el.innerHTML = Math.round(item.num * animation.ratio).toString();
       });
 
       animation.seek(0);
@@ -167,25 +170,25 @@ export default {
         start: "top center",
         end: "bottom top",
         onEnter() {
-          if (el.innerHTML == 0) {
+          if (el.innerHTML == "0") {
             animation.restart();
           }
         },
         onEnterBack() {
           if (!animation.isActive()) {
-            el.innerHTML = 0;
+            el.innerHTML = "0";
             animation.seek(0);
             animation.pause(0);
           }
         },
         onLeaveBack() {
-          if (el.innerHTML == 0) {
+          if (el.innerHTML == "0") {
             animation.restart();
           }
         },
         onLeave() {
           if (!animation.isActive()) {
-            el.innerHTML = 0;
+            el.innerHTML = "0";
             animation.seek(0);
             animation.pause(0);
           }
@@ -196,10 +199,18 @@ export default {
 
   methods: {},
 
-  async asyncData() {
-    const api = new Directus("https://5ms1k56r.directus.app/");
-    const podcastPageData = await api.singleton("Podcast").read();
-    const podcastGuests = await api.singleton("Podcast_Guests").read();
+  async asyncData({ app: { $sanity } }) {
+    const podcastPageData =
+      await $sanity.fetch(groq`*[_type == 'podcastPage'][0] {
+  podcastDescription,
+  noOfContinents,
+  noOfCountries
+}`);
+    const podcastGuests = await $sanity.fetch(groq`*[_type == 'podcastGuests'] {
+  _id,
+  name,
+  img
+}`);
 
     return {
       podcastPageData,
@@ -210,7 +221,7 @@ export default {
   data() {
     return {};
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -225,6 +236,7 @@ p {
 
   &--preview {
     @apply w-full;
+
     div {
       @apply shadow-lg;
       @apply rounded-md;
@@ -242,6 +254,7 @@ p {
       @apply py-4;
       @apply px-5;
       @apply rounded-lg;
+
       img {
         @apply mr-3;
         width: 35px;
@@ -311,6 +324,7 @@ p {
         @apply mb-3;
       }
     }
+
     &--subtitle {
       @apply opacity-60;
     }
@@ -330,6 +344,7 @@ p {
     max-width: 200px;
     @apply rounded-full;
   }
+
   small {
     @apply block;
     @apply mt-2;

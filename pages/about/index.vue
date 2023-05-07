@@ -128,12 +128,13 @@
   </div>
 </template>
 
-<script>
-import { Directus } from "@directus/sdk";
+<script lang="ts">
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { defineComponent } from "vue";
+import { groq } from "@nuxtjs/sanity";
 
-export default {
+export default defineComponent({
   head() {
     return {
       title: "SAFT Apologetics | About Us",
@@ -174,12 +175,41 @@ export default {
     });
   },
 
-  async asyncData() {
-    const api = new Directus("https://5ms1k56r.directus.app/");
-    const aboutPageData = await api.singleton("About").read();
-    const coreTeamMembers = await api.singleton("Team").read();
-    const endorsements = await api.singleton("Testimonials").read();
-    const advisoryBoardMembers = await api.singleton("Advisory_Board").read();
+  async asyncData({ app: { $sanity } }) {
+    const aboutPageData = await $sanity.fetch(groq`*[_type == 'aboutPage'][0] {
+  fromFoundersDesk,
+  vision,
+  mission,
+  aboutUs,
+  statementOfFaith,
+  advisoryBoardDescription
+}`);
+    const coreTeamMembers = await $sanity.fetch<
+      {
+        _id: string;
+        title: string;
+        name: string;
+        description: string;
+        imageId?: string;
+      }[]
+    >(groq`*[_type == 'coreTeam'] {
+  _id,
+  title,
+  name,
+  description,
+  "imageId": img.asset._ref
+}`);
+    const endorsements = await $sanity.fetch(groq`*[_type == 'endorsements'] {
+  _id,
+  name,
+  body,
+  title
+}`);
+    const advisoryBoardMembers =
+      await $sanity.fetch(groq`*[_type == 'advisoryBoard'] {
+  name,
+  title
+}`);
 
     return {
       aboutPageData,
@@ -188,7 +218,7 @@ export default {
       advisoryBoardMembers,
     };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -222,14 +252,17 @@ export default {
       @apply mb-6;
       max-width: 300px;
     }
+
     h3 {
       @apply text-3xl;
       @apply font-semibold;
     }
+
     h4 {
       @apply text-xl;
       color: #6c6c6c;
     }
+
     p {
       @apply mt-3;
       max-width: 600px;
@@ -277,6 +310,7 @@ export default {
     p {
       @apply mb-3;
     }
+
     h5 {
       @apply uppercase;
       @apply font-bold;
@@ -301,6 +335,7 @@ export default {
   .about-us {
     &--desc {
       columns: 500px;
+
       p {
         -webkit-column-break-inside: avoid;
         page-break-inside: avoid;
@@ -323,12 +358,15 @@ export default {
         @apply row-end-4;
         @apply mr-10;
       }
+
       h3 {
         @apply col-start-2;
       }
+
       h4 {
         @apply col-start-2;
       }
+
       p {
         @apply col-start-2;
       }
