@@ -11,41 +11,20 @@
       <div class="podcast">
         <article class="podcast--preview">
           <div id="buzzsprout-small-player-1034671" aos></div>
-          <a href="https://saftpodcast.buzzsprout.com/" target="_blank" aos
-            ><img src="@/assets/buzzsprout-icon.svg" /> Visit our podcast
-            website</a
-          >
+          <a href="https://saftpodcast.buzzsprout.com/" target="_blank" aos><img src="@/assets/buzzsprout-icon.svg" />
+            Visit our podcast
+            website</a>
         </article>
 
         <article class="podcast--buttons">
-          <a
-            href="https://podcasts.apple.com/in/podcast/saft-podcast/id1511404295"
-            target="_blank"
-            aos
-            ><img
-              src="@/assets/apple-podcasts.png"
-              alt="Listen on Apple Podcasts"
-          /></a>
-          <a
-            href="https://podcasts.google.com/?feed=aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xMDM0NjcxLnJzcw=="
-            target="_blank"
-            aos
-            ><img
-              src="@/assets/google-podcasts.png"
-              alt="Listen on Google Podcasts"
-          /></a>
-          <a
-            href="https://open.spotify.com/show/4hOLouY5QFv3KuNNDUi5hM"
-            target="_blank"
-            aos
-            ><img src="@/assets/spotify-podcasts.png" alt="Listen on Spotify"
-          /></a>
-          <a
-            href="https://www.youtube.com/channel/UCBDroMQT6UM9RCK3vjdW6dA/videos"
-            target="_blank"
-            aos
-            ><img src="@/assets/youtube-podcasts.png" alt="Watch on Youtube"
-          /></a>
+          <a href="https://podcasts.apple.com/in/podcast/saft-podcast/id1511404295" target="_blank" aos><img
+              src="@/assets/apple-podcasts.png" alt="Listen on Apple Podcasts" /></a>
+          <a href="https://podcasts.google.com/?feed=aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xMDM0NjcxLnJzcw=="
+            target="_blank" aos><img src="@/assets/google-podcasts.png" alt="Listen on Google Podcasts" /></a>
+          <a href="https://open.spotify.com/show/4hOLouY5QFv3KuNNDUi5hM" target="_blank" aos><img
+              src="@/assets/spotify-podcasts.png" alt="Listen on Spotify" /></a>
+          <a href="https://www.youtube.com/channel/UCBDroMQT6UM9RCK3vjdW6dA/videos" target="_blank" aos><img
+              src="@/assets/youtube-podcasts.png" alt="Watch on Youtube" /></a>
         </article>
       </div>
     </section>
@@ -87,12 +66,7 @@
     <section class="container">
       <h1 class="mt-16 mb-24" aos>Guests</h1>
       <div class="flex flex-wrap">
-        <article
-          v-for="{ _id, name, imageId } in podcastGuests"
-          :key="_id"
-          class="guest"
-          aos
-        >
+        <article v-for="{ _id, name, imageId } in podcastGuests" :key="_id" class="guest" aos>
           <sanity-image v-if="imageId" :asset-id="imageId" />
           <small>{{ name }}</small>
         </article>
@@ -138,7 +112,9 @@ export default defineComponent({
     gsap.registerPlugin(ScrollTrigger);
 
     let [countryNo, continentNo] = [
+      // @ts-expect-error
       this.podcastPageData.noOfCountries,
+      // @ts-expect-error
       this.podcastPageData.noOfContinents,
     ];
 
@@ -197,14 +173,20 @@ export default defineComponent({
   methods: {},
 
   async asyncData({ app: { $sanity } }) {
-    const podcastPageData =
-      await $sanity.fetch(groq`*[_type == 'podcastPage'][0] {
+    const podcastPageData = await $sanity.fetch<{
+      podcastDescription: string;
+      noOfContinents: number;
+      noOfCountries: number;
+    }>(groq`*[_type == 'podcastPage'][0] {
   podcastDescription,
   noOfContinents,
   noOfCountries
 }`);
-    const podcastGuests =
-      await $sanity.fetch(groq`*[_type == 'podcastGuests']|order(orderRank) {
+    const podcastGuests = await $sanity.fetch<{
+      _id: string;
+      name: string;
+      imageId: string;
+    }>(groq`*[_type == 'podcastGuests']|order(orderRank) {
   _id,
   name,
   "imageId": img.asset._ref
@@ -214,10 +196,6 @@ export default defineComponent({
       podcastPageData,
       podcastGuests,
     };
-  },
-
-  data() {
-    return {};
   },
 });
 </script>

@@ -2,21 +2,13 @@
   <div>
     <section class="container pt-12 about-us">
       <h1 class="mb-8" aos>About Us</h1>
-      <article
-        class="about-us--desc"
-        aos
-        v-html="aboutPageData.aboutUs"
-      ></article>
+      <article class="about-us--desc" aos v-html="aboutPageData.aboutUs"></article>
     </section>
 
     <section class="flex">
       <div class="ml-auto scroll-circle">
-        <div
-          class="relative w-48 h-48 overflow-x-hidden rounded-full shadow-2xl md:h-72 md:w-72 light-gradient"
-        ></div>
-        <div
-          class="relative w-16 h-16 rounded-full shadow-2xl -top-10 -left-1/4 md:h-28 md:w-28 middle-gradient"
-        ></div>
+        <div class="relative w-48 h-48 overflow-x-hidden rounded-full shadow-2xl md:h-72 md:w-72 light-gradient"></div>
+        <div class="relative w-16 h-16 rounded-full shadow-2xl -top-10 -left-1/4 md:h-28 md:w-28 middle-gradient"></div>
       </div>
     </section>
 
@@ -48,9 +40,8 @@
 
     <section class="pt-10 overflow-hidden pb-14">
       <div class="absolute w-full">
-        <div
-          class="relative w-48 h-48 rounded-full shadow-2xl -left-20 md:h-72 md:w-72 dark-gradient scroll-circle"
-        ></div>
+        <div class="relative w-48 h-48 rounded-full shadow-2xl -left-20 md:h-72 md:w-72 dark-gradient scroll-circle">
+        </div>
       </div>
     </section>
 
@@ -58,11 +49,7 @@
 
     <section id="core-team" class="container pt-6 md:pt-0 core-team">
       <h1 class="mb-24 md:mb-32" aos>Our Core Team</h1>
-      <article
-        class="core-team--card"
-        v-for="{ _id, name, title, description, imageId } in coreTeamMembers"
-        :key="_id"
-      >
+      <article class="core-team--card" v-for="{ _id, name, title, description, imageId } in coreTeamMembers" :key="_id">
         <sanity-image v-if="imageId" :asset-id="imageId" aos />
         <h3 aos>{{ name }}</h3>
         <h4 aos>{{ title }}</h4>
@@ -76,12 +63,8 @@
         <p aos>{{ aboutPageData.advisoryBoardDescription }}</p>
 
         <article class="advisory-board">
-          <section
-            class="advisory-board--card"
-            v-for="{ id, name, title, imageId } in advisoryBoardMembers"
-            :key="id"
-            aos
-          >
+          <section class="advisory-board--card" v-for="{ id, name, title, imageId } in advisoryBoardMembers" :key="id"
+            aos>
             <sanity-image v-if="imageId" :asset-id="imageId" aos />
             <p>{{ name }}</p>
             <small>{{ title }}</small>
@@ -91,18 +74,12 @@
     </section>
 
     <section class="w-full pt-10 pb-14">
-      <div
-        class="relative w-48 h-48 ml-auto rounded-full shadow-2xl md:h-72 md:w-72 darker-gradient scroll-circle"
-      ></div>
+      <div class="relative w-48 h-48 ml-auto rounded-full shadow-2xl md:h-72 md:w-72 darker-gradient scroll-circle"></div>
     </section>
 
     <section id="endorsements" class="container endorsements">
       <h1 class="mb-12 md:mb-24" aos>Endorsements</h1>
-      <article
-        class="endorsements--card"
-        v-for="{ _id, name, title, body } in endorsements"
-        :key="_id"
-      >
+      <article class="endorsements--card" v-for="{ _id, name, title, body } in endorsements" :key="_id">
         <div v-html="body" class="mb-3"></div>
         <h5>{{ name }}</h5>
         <p>{{ title }}</p>
@@ -113,7 +90,7 @@
       <article class="statement text-article" aos>
         <h1 class="mb-8">Statement of Faith</h1>
         <div class="[&>p]:mb-3">
-          <sanity-content :blocks="aboutPageData.statementOfFaith" />
+          <sanity-content :blocks="aboutPageData.statementOfFaith" :serializers="serializers" />
         </div>
       </article>
     </section>
@@ -124,6 +101,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { defineComponent } from "vue";
+import PortableTextSup from "@/components/PortableText/Sup.vue";
 import { groq } from "@nuxtjs/sanity";
 
 export default defineComponent({
@@ -165,6 +143,12 @@ export default defineComponent({
         }
       );
     });
+  },
+
+  data() {
+    return {
+      serializers: { marks: { sup: PortableTextSup } },
+    };
   },
 
   async asyncData({ app: { $sanity } }) {

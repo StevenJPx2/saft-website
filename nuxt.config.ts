@@ -7,8 +7,13 @@ export default <NuxtConfig>{
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "msapplication-TileColor", content: "#da532c" },
-      { name: "theme-color", content: "#ffffff" },
-      { hid: "description", name: "description", content: "" },
+      { name: "theme-color", content: "#07003d" },
+      {
+        hid: "description",
+        name: "description",
+        content:
+          "Equipping the believers to defend the faith anytime, anywhere.",
+      },
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
@@ -28,7 +33,7 @@ export default <NuxtConfig>{
       {
         rel: "mask-icon",
         href: "/safari-pinned-tab.svg",
-        color: "#000000",
+        color: "#07003d",
       },
     ],
   },
