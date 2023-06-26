@@ -11,20 +11,41 @@
       <div class="podcast">
         <article class="podcast--preview">
           <div id="buzzsprout-small-player-1034671" aos></div>
-          <a href="https://saftpodcast.buzzsprout.com/" target="_blank" aos><img src="@/assets/buzzsprout-icon.svg" />
-            Visit our podcast
-            website</a>
+          <a href="https://saftpodcast.buzzsprout.com/" target="_blank" aos
+            ><img src="@/assets/buzzsprout-icon.svg" /> Visit our podcast
+            website</a
+          >
         </article>
 
         <article class="podcast--buttons">
-          <a href="https://podcasts.apple.com/in/podcast/saft-podcast/id1511404295" target="_blank" aos><img
-              src="@/assets/apple-podcasts.png" alt="Listen on Apple Podcasts" /></a>
-          <a href="https://podcasts.google.com/?feed=aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xMDM0NjcxLnJzcw=="
-            target="_blank" aos><img src="@/assets/google-podcasts.png" alt="Listen on Google Podcasts" /></a>
-          <a href="https://open.spotify.com/show/4hOLouY5QFv3KuNNDUi5hM" target="_blank" aos><img
-              src="@/assets/spotify-podcasts.png" alt="Listen on Spotify" /></a>
-          <a href="https://www.youtube.com/channel/UCBDroMQT6UM9RCK3vjdW6dA/videos" target="_blank" aos><img
-              src="@/assets/youtube-podcasts.png" alt="Watch on Youtube" /></a>
+          <a
+            href="https://podcasts.apple.com/in/podcast/saft-podcast/id1511404295"
+            target="_blank"
+            aos
+            ><img
+              src="@/assets/apple-podcasts.png"
+              alt="Listen on Apple Podcasts"
+          /></a>
+          <a
+            href="https://podcasts.google.com/?feed=aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS8xMDM0NjcxLnJzcw=="
+            target="_blank"
+            aos
+            ><img
+              src="@/assets/google-podcasts.png"
+              alt="Listen on Google Podcasts"
+          /></a>
+          <a
+            href="https://open.spotify.com/show/4hOLouY5QFv3KuNNDUi5hM"
+            target="_blank"
+            aos
+            ><img src="@/assets/spotify-podcasts.png" alt="Listen on Spotify"
+          /></a>
+          <a
+            href="https://www.youtube.com/channel/UCBDroMQT6UM9RCK3vjdW6dA/videos"
+            target="_blank"
+            aos
+            ><img src="@/assets/youtube-podcasts.png" alt="Watch on Youtube"
+          /></a>
         </article>
       </div>
     </section>
@@ -66,7 +87,13 @@
     <section class="container">
       <h1 class="mt-16 mb-24" aos>Guests</h1>
       <div class="flex flex-wrap">
-        <article v-for="{ _id, name, imageId } in podcastGuests" :key="_id" class="guest" aos>
+        <article
+          v-for="{ _id, name, imageId } in podcastGuests"
+          :key="_id"
+          class="guest"
+          aos
+        >
+          <div class="guest--bg" />
           <sanity-image v-if="imageId" :asset-id="imageId" />
           <small>{{ name }}</small>
         </article>
@@ -315,15 +342,25 @@ p {
   @apply text-center;
   @apply mx-auto;
   @apply mb-16;
+  @apply grid;
+  @apply gap-2;
 
-  img {
-    max-width: 200px;
+  img,
+  &--bg {
+    width: 200px;
+    @apply aspect-square;
     @apply rounded-full;
+    @apply row-start-1;
+    @apply col-start-1;
+  }
+
+  &--bg {
+    @apply bg-gray-300;
   }
 
   small {
+    @apply row-start-2;
     @apply block;
-    @apply mt-2;
     @apply font-medium;
     @apply text-sm;
   }
