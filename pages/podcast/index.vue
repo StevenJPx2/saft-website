@@ -139,9 +139,9 @@ export default defineComponent({
     gsap.registerPlugin(ScrollTrigger);
 
     let [countryNo, continentNo] = [
-      // @ts-expect-error
+      // @ts-ignore
       this.podcastPageData.noOfCountries,
-      // @ts-expect-error
+      // @ts-ignore
       this.podcastPageData.noOfContinents,
     ];
 
